@@ -1,0 +1,522 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup]="legalPersonForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-md-5">
+              <label>Grupo</label>
+              <input
+                formControlName="group"
+                class="form-control"
+                placeholder="grupo"
+                maxlength="30"
+                [ngClass]="{ 'is-invalid': submitted && c.group.errors }"
+              />
+              <div *ngIf="submitted && c.group.errors" class="invalid-feedback">
+                <div *ngIf="c.group.errors.required">Requerido</div>
+                <div *ngIf="c.group.errors.minlength">Mínimo 5 caracteres</div>
+                <div *ngIf="c.group.errors.maxlength">Máximo 30 caracteres</div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label>Tipo de documento</label>
+              <select
+                formControlName="documentType"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && c.documentType.errors }"
+              >
+                <option value="0" disabled>Seleccione</option>
+                <option *ngFor="let item of documentTypes" [value]="item.Id">
+                  {{ item.Value }}
+                </option>
+              </select>
+              <div
+                *ngIf="submitted && c.documentType.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="c.documentType.errors.required">Requerido</div>
+                <div *ngIf="c.documentType.errors.minlength">Requerido</div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label>Número de documento</label>
+              <input
+                formControlName="document"
+                class="form-control"
+                (keypress)="numbersOnly($event)"
+                placeholder="número de documento"
+                maxlength="30"
+                [ngClass]="{ 'is-invalid': submitted && c.document.errors }"
+              />
+              <div
+                *ngIf="submitted && c.document.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="c.document.errors.required">Requerido</div>
+                <div *ngIf="c.document.errors.minlength">
+                  Mínimo 7 caracteres
+                </div>
+                <div *ngIf="c.document.errors.maxlength">
+                  Máximo 10 caracteres
+                </div>
+                <div *ngIf="c.document.errors.pattern">Campo con errores</div>
+              </div>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-md-3">
+              <label>Primer nombre</label>
+              <input
+                formControlName="firstName"
+                class="form-control"
+                placeholder="primer nombre"
+                maxlength="30"
+                [ngClass]="{ 'is-invalid': submitted && c.firstName.errors }"
+              />
+              <div
+                *ngIf="submitted && c.firstName.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="c.firstName.errors.required">Requerido</div>
+                <div *ngIf="c.firstName.errors.minlength">
+                  Mínimo 3 caracteres
+                </div>
+                <div *ngIf="c.firstName.errors.maxlength">
+                  Máximo 30 caracteres
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label>Segundo nombre</label>
+              <input
+                formControlName="secondName"
+                class="form-control"
+                placeholder="segundo nombre"
+                maxlength="30"
+                [ngClass]="{ 'is-invalid': submitted && c.secondName.errors }"
+              />
+              <div
+                *ngIf="submitted && c.secondName.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="c.secondName.errors.minlength">
+                  Mínimo 3 caracteres
+                </div>
+                <div *ngIf="c.secondName.errors.maxlength">
+                  Máximo 30 caracteres
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label>Primer apellido</label>
+              <input
+                formControlName="firstSurname"
+                class="form-control"
+                placeholder="primer apellido"
+                maxlength="30"
+                [ngClass]="{ 'is-invalid': submitted && c.firstSurname.errors }"
+              />
+              <div
+                *ngIf="submitted && c.firstSurname.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="c.firstSurname.errors.required">Requerido</div>
+                <div *ngIf="c.firstSurname.errors.minlength">
+                  Mínimo 3 caracteres
+                </div>
+                <div *ngIf="c.firstSurname.errors.maxlength">
+                  Máximo 30 caracteres
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label>Segundo apellido</label>
+              <input
+                formControlName="secondSurname"
+                class="form-control"
+                placeholder="segundo apellido"
+                maxlength="30"
+                [ngClass]="{
+                  'is-invalid': submitted && c.secondSurname.errors
+                }"
+              />
+              <div
+                *ngIf="submitted && c.secondSurname.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="c.secondSurname.errors.minlength">
+                  Mínimo 3 caracteres
+                </div>
+                <div *ngIf="c.secondSurname.errors.maxlength">
+                  Máximo 30 caracteres
+                </div>
+              </div>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-md-4">
+              <label>Nombre de usuario</label>
+              <input
+                formControlName="userName"
+                class="form-control"
+                placeholder="nombre de usuario"
+                maxlength="30"
+                [ngClass]="{ 'is-invalid': submitted && c.userName.errors }"
+              />
+              <div
+                *ngIf="submitted && c.userName.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="c.userName.errors.required">Requerido</div>
+                <div *ngIf="c.userName.errors.minlength">
+                  Mínimo 3 caracteres
+                </div>
+                <div *ngIf="c.userName.errors.maxlength">
+                  Máximo 30 caracteres
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label>Celular</label>
+              <input
+                formControlName="mobilePhone"
+                class="form-control"
+                (keypress)="numbersOnly($event)"
+                placeholder="celular"
+                maxlength="10"
+                [ngClass]="{ 'is-invalid': submitted && c.mobilePhone.errors }"
+              />
+              <div
+                *ngIf="submitted && c.mobilePhone.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="c.mobilePhone.errors.required">Requerido</div>
+                <div *ngIf="c.mobilePhone.errors.minlength">
+                  Mínimo 10 caracteres
+                </div>
+                <div *ngIf="c.mobilePhone.errors.maxlength">
+                  Máximo 10 caracteres
+                </div>
+                <div *ngIf="c.mobilePhone.errors.pattern">
+                  Campo con errores
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label>Teléfono</label>
+              <input
+                formControlName="phone"
+                class="form-control"
+                (keypress)="numbersOnly($event)"
+                placeholder="teléfono"
+                maxlength="7"
+                [ngClass]="{ 'is-invalid': submitted && c.phone.errors }"
+              />
+              <div *ngIf="submitted && c.phone.errors" class="invalid-feedback">
+                <div *ngIf="c.phone.errors.required">Requerido</div>
+                <div *ngIf="c.phone.errors.minlength">Mínimo 7 caracteres</div>
+                <div *ngIf="c.phone.errors.maxlength">Máximo 7 caracteres</div>
+                <div *ngIf="c.phone.errors.pattern">Campo con errores</div>
+              </div>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-md-6">
+              <label>Correo electrónico</label>
+              <input
+                formControlName="mail"
+                class="form-control"
+                placeholder="correo electrónico"
+                maxlength="40"
+                [ngClass]="{ 'is-invalid': submitted && c.mail.errors }"
+              />
+              <div *ngIf="submitted && c.mail.errors" class="invalid-feedback">
+                <div *ngIf="c.mail.errors.required">Requerido</div>
+                <div *ngIf="c.mail.errors.minlength">Mínimo 10 caracteres</div>
+                <div *ngIf="c.mail.errors.maxlength">Máximo 40 caracteres</div>
+                <div *ngIf="c.mail.errors.pattern">Campo con errores</div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label>Idioma</label>
+              <select
+                formControlName="language"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && c.language.errors }"
+              >
+                <option [value]="0" disabled>Seleccione</option>
+                <option *ngFor="let item of languages" [value]="item.Id">
+                  {{ item.Value }}
+                </option>
+              </select>
+              <div
+                *ngIf="submitted && c.language.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="c.language.errors.required">Requerido</div>
+                <div *ngIf="c.language.errors.minlength">Requerido</div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label>Notificaciones</label>
+              <select
+                formControlName="notification"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && c.notification.errors }"
+              >
+                <option [value]="false">No</option>
+                <option [value]="true">Si</option>
+              </select>
+              <div
+                *ngIf="submitted && c.notification.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="c.notification.errors.required">Requerido</div>
+                <div *ngIf="c.notification.errors.minlength">Requerido</div>
+              </div>
+            </div>
+          </div>
+          <hr />
+          <div class="row">
+            <h4>Información Clientes</h4>
+            <button
+              class="btn btn-info"
+              (click)="addClient()"
+              type="button"
+              style="position: relative; left: 0; margin-left: 10px"
+            >
+              <em class="fa fa-plus"></em>
+            </button>
+          </div>
+          <div class="row" formArrayName="clients">
+            <div
+              class="col-md-12"
+              *ngFor="let i of clients.controls; let item = index"
+              [formGroupName]="item"
+            >
+              <div class="input-group">
+                <div class="col-md-3">
+                  <label>Tipo de documento</label>
+                  <select
+                    formControlName="documentTypeId"
+                    class="form-control"
+                    name="documentTypeId{{ item }}"
+                    [ngClass]="{
+                      'is-invalid':
+                        submitted &&
+                        clients.controls[item].get('documentTypeId').errors
+                    }"
+                  >
+                    <option value="0" disabled>Seleccione</option>
+                    <option
+                      *ngFor="let item of documentTypes"
+                      [value]="item.Id"
+                    >
+                      {{ item.Value }}
+                    </option>
+                  </select>
+                  <div
+                    *ngIf="
+                      submitted &&
+                      clients.controls[item].get('documentTypeId').errors
+                    "
+                    class="invalid-feedback"
+                  >
+                    <div
+                      *ngIf="
+                        clients.controls[item].get('documentTypeId').errors
+                          .required
+                      "
+                    >
+                      Requerido
+                    </div>
+                    <div
+                      *ngIf="
+                        clients.controls[item].get('documentTypeId').errors
+                          .minlength
+                      "
+                    >
+                      Requerido
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <label>Número de documento</label>
+                  <input
+                    class="form-control"
+                    placeholder="documento"
+                    (keypress)="numbersOnly($event)"
+                    formControlName="documentNumber"
+                    name="documentNumber{{ item }}"
+                    maxlength="10"
+                    [ngClass]="{
+                      'is-invalid':
+                        submitted &&
+                        clients.controls[item].get('documentNumber').errors
+                    }"
+                  />
+                  <div
+                    *ngIf="
+                      submitted &&
+                      clients.controls[item].get('documentNumber').errors
+                    "
+                    class="invalid-feedback"
+                  >
+                    <div
+                      *ngIf="
+                        clients.controls[item].get('documentNumber').errors
+                          .required
+                      "
+                    >
+                      Requerido
+                    </div>
+                    <div
+                      *ngIf="
+                        clients.controls[item].get('documentNumber').errors
+                          .minlength
+                      "
+                    >
+                      Mínimo 7 caracteres
+                    </div>
+                    <div
+                      *ngIf="
+                        clients.controls[item].get('documentNumber').errors
+                          .maxlength
+                      "
+                    >
+                      Máximo 10 caracteres
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <label>Identificador bancario</label>
+                  <input
+                    class="form-control"
+                    placeholder="identificador"
+                    (keypress)="numbersOnly($event)"
+                    formControlName="clientBankIdentifier"
+                    name="clientBankIdentifier{{ item }}"
+                    maxlength="10"
+                    [ngClass]="{
+                      'is-invalid':
+                        submitted &&
+                        clients.controls[item].get('clientBankIdentifier')
+                          .errors
+                    }"
+                  />
+                  <div
+                    *ngIf="
+                      submitted &&
+                      clients.controls[item].get('clientBankIdentifier').errors
+                    "
+                    class="invalid-feedback"
+                  >
+                    <div
+                      *ngIf="
+                        clients.controls[item].get('clientBankIdentifier')
+                          .errors.required
+                      "
+                    >
+                      Requerido
+                    </div>
+                    <div
+                      *ngIf="
+                        clients.controls[item].get('clientBankIdentifier')
+                          .errors.minlength
+                      "
+                    >
+                      Mínimo 7 caracteres
+                    </div>
+                    <div
+                      *ngIf="
+                        clients.controls[item].get('clientBankIdentifier')
+                          .errors.maxlength
+                      "
+                    >
+                      Máximo 10 caracteres
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <label>Compañía</label>
+                  <input
+                    class="form-control"
+                    placeholder="compañía"
+                    formControlName="companyName"
+                    name="companyName{{ item }}"
+                    maxlength="20"
+                    [ngClass]="{
+                      'is-invalid':
+                        submitted &&
+                        clients.controls[item].get('companyName').errors
+                    }"
+                  />
+                  <div
+                    *ngIf="
+                      submitted &&
+                      clients.controls[item].get('companyName').errors
+                    "
+                    class="invalid-feedback"
+                  >
+                    <div
+                      *ngIf="
+                        clients.controls[item].get('companyName').errors
+                          .required
+                      "
+                    >
+                      Requerido
+                    </div>
+                    <div
+                      *ngIf="
+                        clients.controls[item].get('companyName').errors
+                          .minlength
+                      "
+                    >
+                      Mínimo 2 caracteres
+                    </div>
+                    <div
+                      *ngIf="
+                        clients.controls[item].get('companyName').errors
+                          .maxlength
+                      "
+                    >
+                      Máximo 20 caracteres
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-1">
+                  <button
+                    class="btn btn-info"
+                    *ngIf="item > 0 && item + 1 === clients.length"
+                    (click)="removeClient(item)"
+                    type="button"
+                    style="
+                      position: relative;
+                      left: 0;
+                      margin-left: 10px;
+                      margin-top: 30px;
+                    "
+                  >
+                    <em class="fa fa-minus"></em>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="row justify-content-center">
+              <div class="col-md-4">
+                <br />
+                <button class="btn btn-primary-credi btn-block">Enviar</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

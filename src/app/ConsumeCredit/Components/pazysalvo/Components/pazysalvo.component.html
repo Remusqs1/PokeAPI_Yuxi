@@ -1,0 +1,203 @@
+<div class="row">
+    <div class="col-12 page-titles">
+        <div class="col-lg-9 col-md-4 col-xs-12 align-self-center">
+        <h4 class="text-themecolor m-b-0">Paz y salvo Credito de Consumo</h4>
+        </div>
+        <div class="col-lg-3 col-md-8 col-xs-12 align-self-center"></div>
+        <ol class="breadcrumb"></ol>
+    </div>
+    <div class="col-12"> 
+    <component-messages #messages></component-messages>
+      <div class="card"> 
+        <form [formGroup]="searchCreditForm" action="submit" class="form-group m-t-30 ml-5" autocomplete="off" >
+          <div class="row">           
+            <div class="col-5"> 
+              <label for="selectDocumentType" class="colorTitle">{{
+                'ConsumeCredit.label.extracts.documentType'
+                  | translate 
+              }}</label>
+              <select
+                #selectDocumentType
+                class="form-control select"
+                formControlName="documentTypeGcDdl"
+                name="documentTypeGcDdl"
+                id="selectDocumentType" 
+                required           
+              >
+                <option disabled [ngValue]="null" selected="true">
+                  Seleccione uno
+                </option>
+                <option
+                  *ngFor="let documentType of documentTypesGc"
+                  value="{{ documentType.Code }}"
+                >
+                  {{ documentType.Value }}
+                </option>
+              </select>
+  
+              <div
+                *ngIf="submittedSearch && c.documentTypeGcDdl.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="c.documentTypeGcDdl.errors.required">Requerido</div>
+              </div>
+            </div>
+            <div class="col-5">
+              <label for="clientDocument" class="colorTitle">{{
+                'ConsumeCredit.label.extracts.documentNumber' | translate
+              }}</label>
+              <input
+                #inputDocument
+                type="text"
+                formControlName="clientDocument"
+                class="form-control"
+                id="clientDocument"
+                name="clientDocument"
+                required 
+                [ngClass]="{
+                  'is-invalid': submittedSearch && c.clientDocument.errors
+                }"
+                placeholder="{{
+                  'savingAccounts.generateCertificate.documentId' | translate
+                }}"
+              />
+              <div
+                *ngIf="submittedSearch && c.clientDocument.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="c.clientDocument.errors.required">Requerido</div>
+                <div *ngIf="c.clientDocument.errors.minlength">
+                  Mínimo 5 caracteres
+                </div>
+                <div *ngIf="c.clientDocument.errors.pattern">
+                  Caracteres invalidos
+                </div>
+                <div *ngIf="c.clientDocument.errors.maxlength">
+                  Máximo 15 caracteres
+                </div>
+              </div>
+            </div>
+  
+            <div class="col-2">
+              <br />
+              <button class="btn btn-outline-default"  (click)="prueba()">
+                   <em class="mdi mdi-account-search mdi-36px"></em> 
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row" >
+    <div class="col-12">
+      <div class="card">
+        <form [formGroup]="getFileForm" action="submit" class="form-group m-t-30 ml-5" autocomplete="off">
+        <div class="row">
+          <div class="col-4 ml-5" *ngIf="accountExist">
+            <label for="selectCreditNumber" class="colorTitle">{{
+                'ConsumeCredit.label.extracts.NumberCredit'
+                  | translate 
+              }}</label>
+            <select
+              #selectCreditNumber
+              formControlName="selectCreditNumber"
+              class="form-control select"
+              name="selectCreditNumber"
+              id="selectCreditNumber" 
+              (change)="onChange(selectCreditNumber.value)"
+              required 
+            >
+              <option disabled [ngValue]="null" selected="true">
+                Seleccione una obligacion
+              </option>
+              <option
+                *ngFor="let item of numberCreditConsume"
+                value="{{ item.CreditNumber }}"
+              >
+                {{ item.CreditNumber }}
+              </option>
+            </select>
+            <!-- <div
+            *ngIf="c.selectCreditNumber.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="c.selectCreditNumber.errors.required">Requerido</div>
+          </div> -->
+          </div>
+          <div class="col-3" *ngIf="accountSelected" >
+            <label for="labelProducyType" class="colorTitle">{{
+                'ConsumeCredit.label.abonoacapital.Product'
+                  | translate 
+              }}</label>
+              <input
+              #labelProducyType
+              type="text"
+              formControlName="labelProducyType"
+              class="form-control"
+              id="labelProducyType"
+              name="labelProducyType"
+              disabled="true"
+              value="{{ creditFilter.ProducyType }}"
+            />      
+                <!-- <label for="labelProducyType" class="form-control select">
+                  "{{ creditFilter.ProducyType }}"
+              </label> -->
+          </div>
+        </div>
+        <br/>
+        <br/>
+         <div class="row" *ngIf="sendEmail">
+           <div class="col-sm-2">
+           </div>
+           <div class="col-7"  >
+             <table class="table">
+              <thead style="color:white;background-color: #5c4ac7;">
+                 <tr>
+                   <th scope="col">Correo</th>
+                   <th scope="col">Resultado</th>
+                 </tr>
+               </thead>
+               <tbody>
+                 <tr *ngFor="let t of emailsSends">
+                   <td>{{ t.MessageField }}</td>                 
+                   <td>{{ t.Message }}</td>
+                 </tr>
+               </tbody>
+             </table>
+           </div>
+           <div class="col-sm-3">
+           </div>
+         </div>
+        
+        <div class="row" *ngIf="accountExist">
+          <div class="col-sm-2">
+          </div>        
+          <div class="col-sm-3">
+            <button
+              class="m-5 btn btn-outline-primary"  (click)="getFilePeaceForm()"
+              >
+              Generar PDF
+            </button>
+          </div>
+          <div class="col-sm-2">
+            <button
+              class="m-5 btn btn-outline-primary"  (click)="sendFilePeaceForm()"
+              >
+              Enviar
+            </button>
+          </div>
+          <div class="col-sm-3">
+            <button class="m-5 btn btn-primary-credi" (click)="cleanForm()">
+              Limpiar Campos
+            </button>
+          </div>
+          <div class="col-sm-2">
+          </div>
+        </div>
+    </form>
+      </div>
+    </div>
+  </div>
+  

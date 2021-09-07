@@ -1,0 +1,115 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <div class="offset-10 card-header-button" style="text-align: end">
+          <button
+            class="btn btn-circle btn-sm btn-primary-credi m-r-5"
+            validate
+            [actions]="[42]"
+          >
+            <i aria-hidden="true" class="ti-download text font-weight-bold"></i>
+          </button>
+          <button
+            class="btn btn-circle btn-sm btn-primary-credi m-r-5"
+            validate
+            [actions]="[41]"
+          >
+            <i aria-hidden="true" class="icon-magnifier text"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <form
+          class="form-group m-t-30"
+          autocomplete="off"
+          [formGroup]="filterForm"
+        >
+          <div class="row">
+            <div class="col-12">
+              <label for="actionType" class="colorTitle">{{
+                'campaign.labels.actionType.label' | translate
+              }}</label>
+              <select
+                class="form-control custom-select"
+                id="actionType"
+                name="actionType"
+                formControlName="actionType"
+              >
+                <option selected [value]="undefined">
+                  {{ 'general.forms.select.placeHolder.select' | translate }}
+                </option>
+                <option value="C">
+                  {{ 'campaign.dropStatus.Campaign' | translate }}
+                </option>
+                <option value="E">
+                  {{ 'campaign.dropStatus.Campaign2' | translate }}
+                </option>
+                <option value="R">
+                  {{ 'campaign.dropStatus.Campaign3' | translate }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </form>
+
+        <div class="table table-responsive smart-table">
+          <smart-table
+            #smartTable
+            [settings]="settings"
+            [actionEditId]="43"
+            [actionDeleteId]="44"
+            (edit)="openDetailValidation($event)"
+            [rowCount]="totalRecord"
+            [source]="profilesList"
+          >
+          </smart-table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<id-modal
+  #showModal
+  [showButtons]="true"
+  size="lg"
+  [closeModalInAcceptEvent]="false"
+  [acceptMessage]="createModalAceptText"
+  [closeMessage]="createModalCloseText"
+  title="{{ createModalTitle }}"
+  (accept)="detailValid()"
+  (close)="closeCreate()"
+>
+  <ng-container modal-body>
+    <div class="col-12">
+      <div class="table table-responsive smart-table">
+        <table
+          class="table table-striped"
+          aria-describedby="TableCampaignValid"
+        >
+          <thead>
+            <tr>
+              <th scope="col">
+                {{ 'campaign.grid.columnsName.firstname' | translate }}
+              </th>
+              <th scope="col">
+                {{ 'campaign.grid.columnsName.lastname' | translate }}
+              </th>
+              <th scope="col">
+                {{ 'campaign.grid.columnsName.detail' | translate }}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ detailValidation.name }}</td>
+              <td>{{ detailValidation.lastname }}</td>
+              <td>{{ detailValidation.detail }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </ng-container>
+</id-modal>

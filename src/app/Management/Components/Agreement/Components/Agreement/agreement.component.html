@@ -1,0 +1,673 @@
+<div class="row">
+  <div class="col-12">
+    <component-messages #messages></component-messages>
+    <div class="card">
+      <div class="card-header">
+        <div class="offset-10 card-header-button" style="text-align: end">
+          <!-- <button class="btn btn-circle btn-sm btn-primary-credi m-r-5" validate [actions]="[5]" (click)="openCreateProfileModal()"> -->
+          <button
+            class="btn btn-circle btn-sm btn-primary-credi m-r-5"
+            validate
+            [actions]="[28]"
+            (click)="openCreateProfileModal()"
+          >
+            <i aria-hidden="true" class="ti-plus text font-weight-bold"></i>
+          </button>
+          <button
+            class="btn btn-circle btn-sm btn-primary-credi m-r-5"
+            validate
+            [actions]="[27]"
+            (click)="getAgreementByName()"
+          >
+            <i aria-hidden="true" class="icon-magnifier text"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <form
+          class="form-group m-t-30"
+          autocomplete="off"
+          [formGroup]="filterForm"
+        >
+          <div class="row">
+            <div class="col-6">
+              <label for="agreementName" class="colorTitle">{{
+                'agreement.labels.agreementName.label' | translate
+              }}</label>
+              <input
+                type="text"
+                formControlName="agreementName"
+                (keyup)="getAgreementByName()"
+                class="form-control"
+                id="filteragreementName"
+                name="filteragreementName"
+                placeholder="{{
+                  'agreement.labels.agreementName.placeHolder' | translate
+                }}"
+              />
+            </div>
+            <div class="col-6">
+              <label for="agreementState" class="colorTitle">{{
+                'agreement.labels.agreementState' | translate
+              }}</label>
+              <!-- <input type="text" formControlName="agreementState" (keyup)="getAgreementByDocument()" class="form-control" id="filteragreementDocument" name="filteragreementDocument" placeholder="{{ 'agreement.labels.agreementName.placeHolder' | translate }}" /> -->
+              <select
+                class="form-control custom-select"
+                id="agreementState"
+                name="agreementState"
+                formControlName="agreementState"
+                (change)="getAgreementByDocument()"
+                [ngClass]="{
+                  'has-error':
+                    (hasError &&
+                      createForm.controls['create_agree_fee'].errors) ||
+                    (createForm.controls['create_agree_fee'].errors &&
+                      (createForm.controls['create_agree_fee'].dirty ||
+                        createForm.controls['create_agree_fee'].touched))
+                }"
+              >
+                <option selected [value]="undefined">
+                  {{ 'agreement.dropState.selectOne' | translate }}
+                </option>
+                <option value="V">
+                  {{ 'agreement.dropState.valid' | translate }}
+                </option>
+                <option value="N">
+                  {{ 'agreement.dropState.inValid' | translate }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </form>
+
+        <div class="table table-responsive smart-table">
+          <smart-table
+            #smartTable
+            [settings]="settings"
+            [actionEditId]="29"
+            [actionDeleteId]="30"
+            [rowCount]="totalRecords"
+            [labelNoRecords]="'general.noRecords'"
+            [source]="agreementList"
+            (edit)="editProfile($event)"
+            (editConfirm)="confirmEdit()"
+            (delete)="confirmDelete($event)"
+            (sortColumn)="sortDataTable($event)"
+            (pageChange)="changePage($event)"
+          >
+          </smart-table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<id-modal
+  #createModal
+  [showButtons]="true"
+  size="lg"
+  [closeModalInAcceptEvent]="false"
+  [acceptMessage]="createModalAceptText"
+  [closeMessage]="createModalCloseText"
+  title="{{ createModalTitle }}"
+  (accept)="createAgreement()"
+  (close)="closeCreate()"
+>
+  <ng-container modal-body>
+    <div class="col-12">
+      <form
+        [formGroup]="createForm"
+        class="form-group m-t-30"
+        autocomplete="off"
+        novalidate
+      >
+        <div class="row m-b-10">
+          <div class="col-4">
+            <label for="create_agree_name" class="colorTitle">{{
+              'agreement.labels.agreementName.label' | translate
+            }}</label>
+          </div>
+          <div class="col-8">
+            <input
+              name="create_agree_name"
+              id="create_agree_name"
+              formControlName="create_agree_name"
+              placeholder="{{
+                'agreement.labels.agreementName.placeHolder' | translate
+              }}"
+              type="text"
+              class="form-control"
+              [ngClass]="{
+                'has-error':
+                  (hasError &&
+                    createForm.controls['create_agree_name'].errors) ||
+                  (createForm.controls['create_agree_name'].errors &&
+                    (createForm.controls['create_agree_name'].dirty ||
+                      createForm.controls['create_agree_name'].touched))
+              }"
+            />
+            <div
+              class="has-error"
+              *ngIf="
+                (hasError && createForm.controls['create_agree_name'].errors) ||
+                (createForm.controls['create_agree_name'].errors &&
+                  (createForm.controls['create_agree_name'].dirty ||
+                    createForm.controls['create_agree_name'].touched))
+              "
+            >
+              <span
+                *ngIf="createForm.controls['create_agree_name'].errors.required"
+                >{{ 'general.requiredField' | translate }}</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="row m-b-10">
+          <div class="col-4">
+            <label for="create_agree_code" class="colorTitle">{{
+              'agreement.labels.code.label' | translate
+            }}</label>
+          </div>
+          <div class="col-8">
+            <input
+              name="create_agree_code"
+              id="create_agree_code"
+              formControlName="create_agree_code"
+              placeholder="{{
+                'agreement.labels.code.placeHolder' | translate
+              }}"
+              type="text"
+              class="form-control"
+              [ngClass]="{
+                'has-error':
+                  (hasError &&
+                    createForm.controls['create_agree_code'].errors) ||
+                  (createForm.controls['create_agree_code'].errors &&
+                    (createForm.controls['create_agree_code'].dirty ||
+                      createForm.controls['create_agree_code'].touched))
+              }"
+            />
+            <div
+              class="has-error"
+              *ngIf="
+                (hasError && createForm.controls['create_agree_code'].errors) ||
+                (createForm.controls['create_agree_code'].errors &&
+                  (createForm.controls['create_agree_code'].dirty ||
+                    createForm.controls['create_agree_code'].touched))
+              "
+            >
+              <span
+                *ngIf="createForm.controls['create_agree_code'].errors.required"
+                >{{ 'general.requiredField' | translate }}</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="row m-b-10">
+          <div class="col-4">
+            <label for="create_agree_document" class="colorTitle">{{
+              'agreement.labels.documentNumber.label' | translate
+            }}</label>
+          </div>
+          <div class="col-8">
+            <input
+              name="create_agree_document"
+              id="create_agree_document"
+              formControlName="create_agree_document"
+              placeholder="{{
+                'agreement.labels.documentNumber.placeHolder' | translate
+              }}"
+              type="text"
+              class="form-control"
+              [ngClass]="{
+                'has-error':
+                  (hasError &&
+                    createForm.controls['create_agree_document'].errors) ||
+                  (createForm.controls['create_agree_document'].errors &&
+                    (createForm.controls['create_agree_document'].dirty ||
+                      createForm.controls['create_agree_document'].touched))
+              }"
+            />
+            <div
+              class="has-error"
+              *ngIf="
+                (hasError &&
+                  createForm.controls['create_agree_document'].errors) ||
+                (createForm.controls['create_agree_document'].errors &&
+                  (createForm.controls['create_agree_document'].dirty ||
+                    createForm.controls['create_agree_document'].touched))
+              "
+            >
+              <span
+                *ngIf="
+                  createForm.controls['create_agree_document'].errors.required
+                "
+                >{{ 'general.requiredField' | translate }}</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="row m-b-10">
+          <div class="col-4">
+            <label for="create_agree_fee" class="colorTitle">{{
+              'agreement.labels.agreementFlexibleFee' | translate
+            }}</label>
+          </div>
+          <div class="col-8">
+            <select
+              class="form-control custom-select"
+              id="create_agree_fee"
+              name="create_agree_fee"
+              formControlName="create_agree_fee"
+              [ngClass]="{
+                'has-error':
+                  (hasError &&
+                    createForm.controls['create_agree_fee'].errors) ||
+                  (createForm.controls['create_agree_fee'].errors &&
+                    (createForm.controls['create_agree_fee'].dirty ||
+                      createForm.controls['create_agree_fee'].touched))
+              }"
+            >
+              <option selected [value]="undefined">
+                {{ 'agreement.dropFlexibleFee.selectOne' | translate }}
+              </option>
+              <option [value]="true">
+                {{ 'agreement.dropFlexibleFee.valid' | translate }}
+              </option>
+              <option [value]="false">
+                {{ 'agreement.dropFlexibleFee.inValid' | translate }}
+              </option>
+            </select>
+            <div
+              class="has-error"
+              *ngIf="
+                (hasError && createForm.controls['create_agree_fee'].errors) ||
+                (createForm.controls['create_agree_fee'].errors &&
+                  (createForm.controls['create_agree_fee'].dirty ||
+                    createForm.controls['create_agree_fee'].touched))
+              "
+            >
+              <span
+                *ngIf="createForm.controls['create_agree_fee'].errors.required"
+                >{{ 'general.requiredField' | translate }}</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="row m-b-10">
+          <div class="col-4">
+            <label for="create_agree_status" class="colorTitle">{{
+              'agreement.labels.agreementState' | translate
+            }}</label>
+          </div>
+          <div class="col-8">
+            <select
+              class="form-control custom-select"
+              id="create_agree_status"
+              name="create_agree_status"
+              formControlName="create_agree_status"
+              [ngClass]="{
+                'has-error':
+                  (hasError &&
+                    createForm.controls['create_agree_status'].errors) ||
+                  (createForm.controls['create_agree_status'].errors &&
+                    (createForm.controls['create_agree_status'].dirty ||
+                      createForm.controls['create_agree_status'].touched))
+              }"
+            >
+              <option selected [value]="undefined">
+                {{ 'agreement.dropState.selectOne' | translate }}
+              </option>
+              <option value="V">
+                {{ 'agreement.dropState.valid' | translate }}
+              </option>
+              <option value="N">
+                {{ 'agreement.dropState.inValid' | translate }}
+              </option>
+            </select>
+            <div
+              class="has-error"
+              *ngIf="
+                (hasError &&
+                  createForm.controls['create_agree_status'].errors) ||
+                (createForm.controls['create_agree_status'].errors &&
+                  (createForm.controls['create_agree_status'].dirty ||
+                    createForm.controls['create_agree_status'].touched))
+              "
+            >
+              <span
+                *ngIf="
+                  createForm.controls['create_agree_status'].errors.required
+                "
+                >{{ 'general.requiredField' | translate }}</span
+              >
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </ng-container>
+</id-modal>
+
+<id-modal
+  #editModal
+  [windowClass]="''"
+  [showButtons]="true"
+  size="lg"
+  [closeModalInAcceptEvent]="false"
+  [acceptMessage]="editModalAceptText"
+  [closeMessage]="editModalCloseText"
+  title="{{ editModalTitle }}"
+  (accept)="confirmEdit()"
+  (close)="closeEdit()"
+>
+  <ng-container modal-body>
+    <div>
+      <form
+        [formGroup]="editForm"
+        class="form-group m-t-30"
+        autocomplete="off"
+        novalidate
+      >
+        <div class="row m-b-10">
+          <div class="col-4">
+            <label for="edit_agree_name" class="colorTitle">{{
+              'agreement.labels.agreementName.label' | translate
+            }}</label>
+          </div>
+          <div class="col-8">
+            <input
+              name="edit_agree_name"
+              id="edit_agree_name"
+              formControlName="edit_agree_name"
+              placeholder="{{
+                'agreement.labels.agreementName.placeHolder' | translate
+              }}"
+              type="text"
+              class="form-control"
+              [ngClass]="{
+                'has-error':
+                  (hasError && editForm.controls['edit_agree_name'].errors) ||
+                  (editForm.controls['edit_agree_name'].errors &&
+                    (editForm.controls['edit_agree_name'].dirty ||
+                      editForm.controls['edit_agree_name'].touched))
+              }"
+            />
+            <div
+              class="has-error"
+              *ngIf="
+                (hasError && editForm.controls['edit_agree_name'].errors) ||
+                (editForm.controls['edit_agree_name'].errors &&
+                  (editForm.controls['edit_agree_name'].dirty ||
+                    editForm.controls['edit_agree_name'].touched))
+              "
+            >
+              <span
+                *ngIf="editForm.controls['edit_agree_name'].errors.required"
+                >{{ 'general.requiredField' | translate }}</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="row m-b-10">
+          <div class="col-4">
+            <label for="edit_agree_code" class="colorTitle">{{
+              'agreement.labels.code.label' | translate
+            }}</label>
+          </div>
+          <div class="col-8">
+            <input
+              name="edit_agree_code"
+              id="edit_agree_code"
+              formControlName="edit_agree_code"
+              placeholder="{{
+                'agreement.labels.code.placeHolder' | translate
+              }}"
+              type="text"
+              class="form-control"
+              [ngClass]="{
+                'has-error':
+                  (hasError && editForm.controls['edit_agree_code'].errors) ||
+                  (editForm.controls['edit_agree_code'].errors &&
+                    (editForm.controls['edit_agree_code'].dirty ||
+                      editForm.controls['edit_agree_code'].touched))
+              }"
+            />
+            <div
+              class="has-error"
+              *ngIf="
+                (hasError && editForm.controls['edit_agree_code'].errors) ||
+                (editForm.controls['edit_agree_code'].errors &&
+                  (editForm.controls['edit_agree_code'].dirty ||
+                    editForm.controls['edit_agree_code'].touched))
+              "
+            >
+              <span
+                *ngIf="editForm.controls['edit_agree_code'].errors.required"
+                >{{ 'general.requiredField' | translate }}</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="row m-b-10">
+          <div class="col-4">
+            <label for="edit_agree_document" class="colorTitle">{{
+              'agreement.labels.documentNumber.label' | translate
+            }}</label>
+          </div>
+          <div class="col-8">
+            <input
+              name="edit_agree_document"
+              id="edit_agree_document"
+              formControlName="edit_agree_document"
+              placeholder="{{
+                'agreement.labels.documentNumber.placeHolder' | translate
+              }}"
+              type="text"
+              class="form-control"
+              [ngClass]="{
+                'has-error':
+                  (hasError &&
+                    editForm.controls['edit_agree_document'].errors) ||
+                  (editForm.controls['edit_agree_document'].errors &&
+                    (editForm.controls['edit_agree_document'].dirty ||
+                      editForm.controls['edit_agree_document'].touched))
+              }"
+            />
+            <div
+              class="has-error"
+              *ngIf="
+                (hasError && editForm.controls['edit_agree_document'].errors) ||
+                (editForm.controls['edit_agree_document'].errors &&
+                  (editForm.controls['edit_agree_document'].dirty ||
+                    editForm.controls['edit_agree_document'].touched))
+              "
+            >
+              <span
+                *ngIf="editForm.controls['edit_agree_document'].errors.required"
+                >{{ 'general.requiredField' | translate }}</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="row m-b-10">
+          <div class="col-4">
+            <label for="edit_agree_fee" class="colorTitle">{{
+              'agreement.labels.agreementFlexibleFee' | translate
+            }}</label>
+          </div>
+          <div class="col-8">
+            <select
+              class="form-control custom-select"
+              id="edit_agree_fee"
+              name="edit_agree_fee"
+              formControlName="edit_agree_fee"
+              [ngClass]="{
+                'has-error':
+                  (hasError && editForm.controls['edit_agree_fee'].errors) ||
+                  (editForm.controls['edit_agree_fee'].errors &&
+                    (editForm.controls['edit_agree_fee'].dirty ||
+                      editForm.controls['edit_agree_fee'].touched))
+              }"
+            >
+              <option selected [value]="undefined">
+                {{ 'agreement.dropFlexibleFee.selectOne' | translate }}
+              </option>
+              <option [value]="true">
+                {{ 'agreement.dropFlexibleFee.valid' | translate }}
+              </option>
+              <option [value]="false">
+                {{ 'agreement.dropFlexibleFee.inValid' | translate }}
+              </option>
+            </select>
+            <div
+              class="has-error"
+              *ngIf="
+                (hasError && editForm.controls['edit_agree_fee'].errors) ||
+                (editForm.controls['edit_agree_fee'].errors &&
+                  (editForm.controls['edit_agree_fee'].dirty ||
+                    editForm.controls['edit_agree_fee'].touched))
+              "
+            >
+              <span
+                *ngIf="editForm.controls['edit_agree_fee'].errors.required"
+                >{{ 'general.requiredField' | translate }}</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="row m-b-10">
+          <div class="col-4">
+            <label for="edit_agree_status" class="colorTitle">{{
+              'agreement.labels.agreementState' | translate
+            }}</label>
+          </div>
+          <div class="col-8">
+            <select
+              class="form-control custom-select"
+              id="edit_agree_status"
+              name="edit_agree_status"
+              formControlName="edit_agree_status"
+              [ngClass]="{
+                'has-error':
+                  (hasError && editForm.controls['edit_agree_status'].errors) ||
+                  (editForm.controls['edit_agree_status'].errors &&
+                    (editForm.controls['edit_agree_status'].dirty ||
+                      editForm.controls['edit_agree_status'].touched))
+              }"
+            >
+              <option selected [value]="undefined">
+                {{ 'agreement.dropState.selectOne' | translate }}
+              </option>
+              <option value="V">
+                {{ 'agreement.dropState.valid' | translate }}
+              </option>
+              <option value="N">
+                {{ 'agreement.dropState.inValid' | translate }}
+              </option>
+            </select>
+            <div
+              class="has-error"
+              *ngIf="
+                (hasError && editForm.controls['edit_agree_status'].errors) ||
+                (editForm.controls['edit_agree_status'].errors &&
+                  (editForm.controls['edit_agree_status'].dirty ||
+                    editForm.controls['edit_agree_status'].touched))
+              "
+            >
+              <span
+                *ngIf="editForm.controls['edit_agree_status'].errors.required"
+                >{{ 'general.requiredField' | translate }}</span
+              >
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="row m-b-10">
+        <div
+          id="datatable-responsive_wrapper"
+          class="dataTables_wrapper form-inline table table-responsive"
+          style="
+            width: 100%;
+            overflow-x: hidden;
+            height: 300px;
+            overflow-y: auto;
+          "
+        >
+          <table
+            style="-webkit-margin-top-collapse: discard"
+            id="datatable-responsive"
+            class="table table-striped table-bordered no-wrap dataTable dtr-inline"
+            cellspacing="0"
+            width="100%"
+            role="grid"
+            aria-describedby="datatable-responsive_info"
+          >
+            <thead>
+              <tr role="row">
+                <th scope="col" style="width: 80px">
+                  <label class="checkbox-inline"
+                    ><input
+                      type="checkbox"
+                      name="selectedAllActions"
+                      [(ngModel)]="selectedAllActions"
+                      (change)="selectAllActions()"
+                    /><label style="padding-left: 5px"
+                      ><strong>{{
+                        'agreement.labels.toAssign' | translate
+                      }}</strong></label
+                    ></label
+                  >
+                </th>
+                <th scope="col" style="width: 107px">
+                  {{ 'agreement.labels.selectActiosn.option' | translate }}
+                </th>
+                <!-- <th style="width:107px">{{'agreement.labels.selectActiosn.functionality' | translate}}</th> -->
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr
+                class="odd"
+                *ngFor="let item of documentList; let index = index"
+              >
+                <td style="text-align: -webkit-center">
+                  <label class="checkbox-inline"
+                    ><input
+                      type="checkbox"
+                      trueFalseValue
+                      trueValue="V"
+                      falseValue="N"
+                      [checked]="item.dag_status == 'V'"
+                      [(ngModel)]="item.dag_status"
+                  /></label>
+                </td>
+                <td>
+                  {{ item.doc_name }}
+                </td>
+                <!-- <td>
+                                    {{ item.action.act_functionality }}
+                                </td> -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</id-modal>
+
+<id-modal
+  #deleteModal
+  [showButtons]="true"
+  size="sm"
+  title="{{ this.events.eventAlertModal.title }}"
+  acceptMessage="general.delete"
+  closeMessage="general.buttons.cancel"
+  (accept)="deleteItem()"
+>
+  <ng-container modal-header>{{ events.eventAlertModal.title }}</ng-container>
+  <ng-container modal-body>
+    {{ events.eventAlertModal.message }}
+  </ng-container>
+</id-modal>

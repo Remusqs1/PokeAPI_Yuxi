@@ -1,0 +1,20 @@
+<div [formGroup]="form" class="col-12">
+  <label [attr.for]="catalogs.key">{{catalogs.label}}</label>
+  <div class="row form-group" [ngSwitch]="catalogs.controlType">
+    <div class="col-12">
+      <input *ngSwitchCase="'textbox'" class="form-control" [formControlName]="catalogs.key" [id]="catalogs.key" [type]="catalogs.type">
+    </div>
+  </div>
+  <div class="row form-group" [ngSwitch]="catalogs.controlType">
+    <div class="col-12">
+      <select [id]="catalogs.key" class="form-control" *ngSwitchCase="'dropdown'" [formControlName]="catalogs.key">
+        <option *ngFor="let opt of catalogs.options" [value]="opt.key">{{opt.value}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row form-group" [ngSwitch]="catalogs.controlType">
+    <div class="col-2">
+      <input *ngSwitchCase="'checkbox'" class="form-control" [formControlName]="catalogs.key" [id]="catalogs.key" [type]="catalogs.type">
+    </div>
+  </div>
+</div>

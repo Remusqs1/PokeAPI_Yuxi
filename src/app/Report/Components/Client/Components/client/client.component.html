@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="offset-10 card-header-button" style="text-align: end;">
+                    <button class="btn btn-circle btn-sm btn-primary-credi m-r-5" validate [actions]="[46]">
+                        <i aria-hidden="true" class="ti-download text font-weight-bold"></i>
+                    </button>
+                    <button class="btn btn-circle btn-sm btn-primary-credi m-r-5" validate [actions]="[45]">
+                        <i aria-hidden="true" class="icon-magnifier text"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+
+                <form class="form-group m-t-30" autocomplete="off" [formGroup]="filterForm">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="documentNumber" class="colorTitle">{{ 'client.label.columnsName.idNumber' | translate }}</label>
+                            <input type="text" placeholder="{{ 'client.label.columnsName.idNumber' | translate }}" formControlName="documentNumber" class="form-control" id="filterprofileName" name="filterprofileName" />
+                        </div>
+                        <!-- <div class="has-error"
+                            *ngIf="(hasError && createForm.controls['cam_status'].errors) || (createForm.controls['cam_status'].errors && (createForm.controls['cam_status'].dirty || createForm.controls['cam_status'].touched))">
+                            <span
+                                *ngIf="createForm.controls['cam_status'].errors.required">{{'general.requiredField'| translate}}</span>
+                        </div> -->
+                    </div>
+                </form>
+
+                <div class="table table-responsive smart-table">
+                    <smart-table #smartTable [settings]="settings" [actionEditId]="47" [actionDeleteId]="1" [rowCount]="totalRecord" [source]="profilesList">
+                    </smart-table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
