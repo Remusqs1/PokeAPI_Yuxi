@@ -4,145 +4,69 @@
     <div class="card login-box-shadow">
       <div class="card-header rounded-top">
         <h1 class="text-themecolor font-weight-bold text-center mt-1">
-          {{ 'administration.authentication.login.label' | translate }}
+          {{ 'administration.authentication.login.label.title' | translate }}
         </h1>
       </div>
-      <div class="image-container">
-        <!-- dark Logo text -->
+      <!-- <div class="image-container">
         <img src="assets/images/logo.png" alt="loginPage" class="dark-logo" />
-        <!-- Light Logo text -->
-        <!-- <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage" /> -->
-      </div>
+      </div> -->
       <div class="card-body rounded-bottom" style="padding-bottom: 0">
-        <form
-          class="form-horizontal form-material"
-          id="loginform"
-          [formGroup]="loginForm"
-        >
-          <!-- <div class="form-group"
-            [ngClass]="{'has-danger': fieldValidation && (!login.usr_type )}">
-            <div class="col-xs-12">
-              <div class="input-group mb-3">
-                <select formControlName="usr_type" class="form-control custom-select" name="usr_type"
-                  [ngClass]="{'has-error': (hasError && loginForm.controls['usr_type'].errors) || (loginForm.controls['usr_type'].errors && (loginForm.controls['usr_type'].dirty || loginForm.controls['usr_type'].touched))}">
-                  <option [value]="'00'" [selected]="true">Seleccione tipo de usuario</option>
-                  <option [value]="'2'">Dominio</option>
-                  <option [value]="'1'">Aplicacion</option>
-                </select>
-              </div>
-              <div class="has-error"
-                *ngIf="(hasError && loginForm.controls['usr_type'].errors) || (loginForm.controls['usr_type'].errors && (loginForm.controls['usr_type'].dirty || loginForm.controls['usr_type'].touched))">
-                <span
-                  *ngIf="loginForm.controls['usr_type'].errors.required">{{'general.validations.requiredField'| translate}}</span>
-              </div>
-            </div>
-          </div> -->
-
+        <form class="form-horizontal form-material" id="loginform" [formGroup]="loginForm" >
           <div class="form-group">
-            <label for="">{{
-              'administration.authentication.login.label.user' | translate
-            }}</label>
+            <label for="">{{ 'administration.authentication.login.label.user' | translate}}</label>
             <div class="col-xs-12">
-              <input
-                class="form-control"
-                type="text"
-                required=""
-                placeholder="{{
-                  'administration.authentication.login.label.user' | translate
-                }}"
-                id="user"
-                formControlName="user"
-                name="user"
-                [ngClass]="{
-                  'has-error':
-                    (hasError && loginForm.controls['user'].errors) ||
-                    (loginForm.controls['user'].errors &&
-                      (loginForm.controls['user'].dirty ||
-                        loginForm.controls['user'].touched))
-                }"
-              />
-              <div
-                class="has-error"
-                *ngIf="
-                  (hasError && loginForm.controls['user'].errors) ||
-                  (loginForm.controls['user'].errors &&
-                    (loginForm.controls['user'].dirty ||
-                      loginForm.controls['user'].touched))
-                "
-              >
-                <span *ngIf="loginForm.controls['user'].errors.required">{{
-                  'general.validations.requiredField' | translate
-                }}</span>
+              <input class="form-control" type="text" required=""
+                placeholder="{{ 'administration.authentication.login.label.user' | translate }}" id="user" formControlName="user"
+                name="user" [ngClass]="{'has-error': (hasError && loginForm.controls['user'].errors) ||
+                                            (loginForm.controls['user'].errors && (loginForm.controls['user'].dirty ||
+                                                loginForm.controls['user'].touched)) }" />
+              <div class="has-error" *ngIf=" (hasError && loginForm.controls['user'].errors) ||
+                                                                      (loginForm.controls['user'].errors && (loginForm.controls['user'].dirty ||
+                                                                          loginForm.controls['user'].touched))">
+                <span *ngIf="loginForm.controls['user'].errors.required">{{ 'general.validations.requiredField' | translate}}</span>
               </div>
             </div>
           </div>
 
           <div class="form-group">
             <div class="col-xs-12">
-              <label for="">{{
-                'administration.authentication.login.label.password' | translate
-              }}</label>
-              <input
-                class="form-control"
-                type="password"
-                required=""
-                (keyup.enter)="onLoggedIn()"
-                placeholder="{{
-                  'administration.authentication.login.label.password'
-                    | translate
-                }}"
-                id="password"
-                formControlName="password"
-                name="password"
+              <label for="">{{ 'administration.authentication.login.label.psw' | translate }}</label>
+              <input class="form-control" type="password" required="" (keyup.enter)="onLoggedIn()"
+                placeholder="{{ 'administration.authentication.login.label.psw' | translate }}"
+                id="password" formControlName="psw" name="psw"
                 [ngClass]="{
                   'has-error':
-                    (hasError && loginForm.controls['password'].errors) ||
-                    (loginForm.controls['password'].errors &&
-                      (loginForm.controls['password'].dirty ||
-                        loginForm.controls['password'].touched))
+                    (hasError && loginForm.controls['psw'].errors) || (loginForm.controls['psw'].errors &&
+                      (loginForm.controls['psw'].dirty ||
+                        loginForm.controls['psw'].touched))
                 }"
               />
-              <div
-                class="has-error"
-                *ngIf="
-                  (hasError && loginForm.controls['password'].errors) ||
-                  (loginForm.controls['password'].errors &&
-                    (loginForm.controls['password'].dirty ||
-                      loginForm.controls['password'].touched))
-                "
-              >
-                <span *ngIf="loginForm.controls['password'].errors.required">{{
-                  'general.validations.requiredField' | translate
-                }}</span>
+              <div class="has-error" *ngIf=" (hasError && loginForm.controls['psw'].errors) ||
+                                (loginForm.controls['psw'].errors && (loginForm.controls['psw'].dirty ||
+                                    loginForm.controls['psw'].touched)) ">
+                <span *ngIf="loginForm.controls['psw'].errors.required">{{ 'general.validations.requiredField' | translate}}</span>
               </div>
             </div>
           </div>
 
           <div class="col-xs-12">
-            <button
-              type="button"
-              class="btn btn-credi btn-block text-uppercase text-white"
-              (click)="onLoggedIn()"
-            >
-              {{
-                'administration.authentication.login.button.singIn' | translate
-              }}
+            <button type="button" class="btn btn-credi btn-block text-uppercase text-white" (click)="onLoggedIn()">
+              {{ 'administration.authentication.login.label.signIn' | translate }}
             </button>
           </div>
           <div class="col-xs-12 m-t-10"></div>
           <div class="form-group row">
             <div class="col-md-12 font-14">
               <div class="custom-control text-center">
-                <a
-                  class="btn btn-link"
-                  href="javascript:void(0)"
-                  id="to-recover"
-                  (click)="forgotPassword()"
-                >
-                  {{
-                    'administration.authentication.login.label.forgotPwd'
-                      | translate
-                  }}
+                <a class="btn btn-link" id="to-recover" (click)="goForgotPassword()">
+                  {{ 'administration.authentication.login.label.forgotPwd' | translate }}
+                </a>
+              </div>
+            </div>
+            <div class="col-md-12 font-14">
+              <div class="custom-control text-center">
+                <a class="btn btn-link" id="to-register" (click)="goRegister()">
+                  {{ 'administration.authentication.login.label.register' | translate }}
                 </a>
               </div>
             </div>

@@ -8,6 +8,7 @@ import { AuthenticationService } from './Services/authentication.service';
 import { CommonService } from '../../../Commons/Services/common.service';
 import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
 import { ChangePasswordComponent } from './Components/change-password/change-password.component';
+import { AuthenticationFormService } from './Services/authentication.form.service';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { ChangePasswordComponent } from './Components/change-password/change-pas
   ],
   providers: [
     AuthenticationService,
+    AuthenticationFormService,
     CommonService
   ]
 })

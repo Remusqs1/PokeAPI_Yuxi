@@ -21,17 +21,12 @@ import { PagerModule } from './Components/SmartTable/components/pager/pager.modu
 import { THeadModule } from './Components/SmartTable/components/thead/thead.module';
 import { SmartTableComponent } from './Components/SmartTable/ng2-smart-table.component';
 import { TrueFalseValueDirective } from './Directives/true-false-value-checkbox.directives';
-// import { SwiperModule } from './Components/Swipper/swiper.module';
 import { CurrencyMaskDirective } from './Directives/currency-mask.directive';
 import { DateFormatPipe } from './Pipes/dateFormatPipe';
 import { StatusPipe } from './Pipes/statusPipe';
 import { CurrencyFormatPipe } from './Pipes/currencyFormatPipe';
 import { SpecialCharsPipe } from './Pipes/SpecialCharsPipe';
-import { ProfileService } from '../Administration/Components/Profile/Services/profile.service';
 import { AuthenticationService } from '../Administration/Components/Authentication/Services/authentication.service';
-import { UserService } from '../Administration/Components/User/Services/user.service';
-import { PermissionService } from '../Administration/Components/Permission/Services/permission.service';
-import { RoleService } from '../Administration/Components/Role/Services/role.service';
 import { GenerateDocumentsComponent } from '../Shared/Components/GenerateDocuments/generateDocuments.component';
 import { GenerateDocumentService } from './Components/GenerateDocuments/services/generateDocument.service';
 import { ValidateSesion } from './Services/validateSesion.component';
@@ -57,7 +52,6 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     THeadModule,
     NgImageSliderModule,
     NgxExtendedPdfViewerModule
-    // SwiperModue
   ],
   declarations: [
     SpinnerComponent,
@@ -98,7 +92,6 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     ModalBasicComponent,
     SmartTableComponent,
     TrueFalseValueDirective,
-    // SwiperModule,
     CurrencyMaskDirective,
     DateFormatPipe,
     StatusPipe,
@@ -110,10 +103,6 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
   ],
   providers: [
     TranslateService,
-    ProfileService,
-    UserService,
-    PermissionService,
-    RoleService,
     AuthenticationService,
     GenerateDocumentService
   ]

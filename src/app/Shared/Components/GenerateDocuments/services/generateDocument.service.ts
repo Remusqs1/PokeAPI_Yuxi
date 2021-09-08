@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Proxy } from '../../../../Commons/Services/proxy';
-import { GetUserProductsOut } from '../../../../SavingsAccount/Components/GenerateCertificate/MethodParameters/GetUserProductsOut';
 import { ResponseFileOut } from '../MethodParameters/getCertificate';
 import { GetCustomerProductsOut } from '../MethodParameters/getCustomerProductsOut';
 @Injectable({
@@ -18,14 +17,7 @@ export class GenerateDocumentService {
         return this.mapCustomerProducts(response);
     }));
   }
-  getAccountsProducts(controller: string, input) {
-    return this.proxy.executePost(controller, input).pipe(map((response) => {
-        return this.mapAccountsProducts(response);
-    }));
-  }
-  mapAccountsProducts(input: any) {
-    return <GetUserProductsOut>input;
-  }
+  
   mapCustomerProducts(input: any) {
     return <GetCustomerProductsOut>input;
   }

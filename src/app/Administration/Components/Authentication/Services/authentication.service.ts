@@ -13,13 +13,9 @@ import { ResetPasswordIn } from '../MethodParameters/resetPasswordIn';
 import { ResetPasswordOut } from '../MethodParameters/resetPasswordOut';
 import { CodeValidationIn } from '../MethodParameters/codeValidationIn';
 import { CodeValidationgOut } from '../MethodParameters/codeValidationOut';
-import { FormControl } from '@angular/forms';
 import { ChangePasswordIn } from '../MethodParameters/changePasswordIn';
 import { ChangePasswordOut } from '../MethodParameters/changePasswordOut';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from '../../../../../environments/environment';
-import { GetPermissionByRoleIn } from '../../Permission/MethodParameters/getPermissionByRoleIn';
-import { GetPermissionByRoleOut } from '../../Permission/MethodParameters/getPermissionByRoleOut';
 
 interface ErrorValidate {
   [s: string]: boolean
@@ -91,17 +87,6 @@ export class AuthenticationService {
 
   mapChangePasswordDataResponse(info: any): ChangePasswordOut {
     const result = info as ChangePasswordOut;
-    return result;
-  }
-
-  getPermissionByRole(input: GetPermissionByRoleIn): Observable<GetPermissionByRoleOut> {
-    const response = this.proxy.executePost('GetPermissionByRole', input, null).pipe(
-      map((resp) => this.mapgetPermissionByRoleDataResponse(resp)));
-    return response;
-  }
-
-  mapgetPermissionByRoleDataResponse(info: any): GetPermissionByRoleOut {
-    const result = <GetPermissionByRoleOut>info;
     return result;
   }
 
