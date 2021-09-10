@@ -9,6 +9,7 @@ import { CommonService } from '../../../Commons/Services/common.service';
 import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
 import { ChangePasswordComponent } from './Components/change-password/change-password.component';
 import { AuthenticationFormService } from './Services/authentication.form.service';
+import { RegisterComponent } from './Components/Register/register.component';
 
 @NgModule({
   imports: [
@@ -20,11 +21,13 @@ import { AuthenticationFormService } from './Services/authentication.form.servic
   declarations: [
     LoginComponent,
     ForgotPasswordComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    RegisterComponent
   ],
   exports: [
     LoginComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    RegisterComponent
   ],
   providers: [
     AuthenticationService,

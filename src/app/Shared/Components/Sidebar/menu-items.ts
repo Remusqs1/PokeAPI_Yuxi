@@ -4,7 +4,7 @@ export const ROUTES: RouteInfo[] = [
 
   {
     path: '/Home',
-    title: 'menu.administration.home.title',
+    title: 'menu.administration.home',
     icon: 'mdi mdi-home-variant mdi-24px',
     class: '',
     label: '',
@@ -12,11 +12,22 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: [],
     actions: [],
-    company: "Credifinanciera"
+    // company: "Credifinanciera"
   },
   {
-    path: '/Records',
-    title: 'menu.administration.home.records',
+    path: '/Users',
+    title: 'menu.administration.users',
+    icon: 'mdi mdi-account-settings-variant mdi-24px',
+    class: '',
+    label: '',
+    labelClass: '',
+    extralink: false,
+    submenu: [],
+    actions: [],
+  },
+  {
+    path: '/Indicatives',
+    title: 'menu.administration.indicatives',
     icon: 'mdi mdi-database mdi-24px',
     class: '',
     label: '',
@@ -24,7 +35,18 @@ export const ROUTES: RouteInfo[] = [
     extralink: false,
     submenu: [],
     actions: [],
-    company: "Credifinanciera"
+    // company: "Credifinanciera"
+  },
+  {
+    path: '/KPI',
+    title: 'menu.administration.kpi',
+    icon: 'mdi mdi-file mdi-24px',
+    class: '',
+    label: '',
+    labelClass: '',
+    extralink: false,
+    submenu: [],
+    actions: [],
   }
 ];
 export const MENUOPTIONS = [
@@ -34,6 +56,6 @@ export const MENUOPTIONS = [
   },
   {
     name: 'Registros',
-    path: '/Registros'
+    path: '/Registers'
   }
 ];

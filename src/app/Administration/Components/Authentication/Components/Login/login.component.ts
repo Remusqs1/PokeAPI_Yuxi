@@ -36,25 +36,24 @@ export class LoginComponent implements OnInit {
   onLoggedIn() {
     this.hasError = false;
     this.showLoader = true;
-    this.goDashboard(); //
     // if (this.loginForm.valid) {
-    //   this.login.usr_userName = this.loginForm.controls.user.value;
-    //   this.login.usr_password = this.loginForm.controls.password.value;
-    //   // this.login.usr_type = this.loginForm.controls.usr_type.value;
+      //   this.login.usr_userName = this.loginForm.controls.user.value;
+      //   this.login.usr_password = this.loginForm.controls.password.value;
+      //   // this.login.usr_type = this.loginForm.controls.usr_type.value;
 
-    //   this.authenticationService.login(this.login).subscribe(response => {
-    //     if (response.result === Result.Success) {
-    //       localStorage.setItem('sesId_adm', response.sessionId);
-    //       localStorage.setItem('user_adm', JSON.stringify(response.user));
+      //   this.authenticationService.login(this.login).subscribe(response => {
+        //     if (response.result === Result.Success) {
+          //       localStorage.setItem('sesId_adm', response.sessionId);
+          //       localStorage.setItem('user_adm', JSON.stringify(response.user));
 
-    //       let userIn: GetUserIn = new GetUserIn();
+          //       let userIn: GetUserIn = new GetUserIn();
     //       userIn.usr_userName = response.user.usr_userName;
     //       this.userService.getUser(userIn).subscribe(resp => {
-    //         if (resp.result === Result.Success) {
-    //           localStorage.setItem('user_info', JSON.stringify(resp.resultGetUser));
+      //         if (resp.result === Result.Success) {
+        //           localStorage.setItem('user_info', JSON.stringify(resp.resultGetUser));
     //         }
     //       });
-
+    
     //       if (response.user.FirstLogin) {
     //         this.goChangePasword();
     //       } else {
@@ -62,22 +61,22 @@ export class LoginComponent implements OnInit {
     //       }
 
     //     } else if (response.result === Result.UserBlocked) {
-    //       this.messages.showMessages('administration.authentication.login.error.messageUserBlocked', 'ERROR');
+      //       this.messages.showMessages('administration.authentication.login.error.messageUserBlocked', 'ERROR');
     //     } else {
-    //       this.messages.showMessages('administration.authentication.login.error.messageInvalidData', 'ERROR');
+      //       this.messages.showMessages('administration.authentication.login.error.messageInvalidData', 'ERROR');
     //     }
     //     this.showLoader = false;
     //   });
     // } else {
-    //   this.hasError = true;
-    //   this.showLoader = false;
-
-    // }
-    localStorage.setItem('isLoggedin', 'true');
+      //   this.hasError = true;
+      //   this.showLoader = false;
+      
+      // }
+      this.goDashboard(); //
+      localStorage.setItem('isLoggedin', 'true');
   }
 
   goDashboard() {
-    console.log("Home");
     this.routes.navigate(['Home']);
   }
 
@@ -93,8 +92,7 @@ export class LoginComponent implements OnInit {
   }
 
   goRegister() {
-    console.log("Register");
-    // this.routes.navigate(['Register']);
+    this.routes.navigate(['Register']);
   }
 
 }

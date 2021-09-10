@@ -9,5 +9,5 @@ export interface RouteInfo {
   extralink: boolean;
   submenu: RouteInfo[];
   actions: number[];
-  company: string;
+  // company: string;
 }

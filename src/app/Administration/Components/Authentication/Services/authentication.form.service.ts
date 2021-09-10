@@ -13,6 +13,14 @@ export class AuthenticationFormService {
       psw: [{ value: undefined, disabled: false }, [Validators.required, Validators.nullValidator, CustomValidators.IsNullorEmpty]]
     });
   }
+
+  getRegisterForm(): FormGroup {
+    return this.formBuilder.group({
+      name: [{ value: undefined, disabled: false }, [Validators.required, Validators.nullValidator, CustomValidators.IsNullorEmpty]],
+      email: [{ value: undefined, disabled: false }, [Validators.required, Validators.nullValidator, CustomValidators.IsNullorEmpty, CustomValidators.EnailFormat]],
+      psw: [{ value: undefined, disabled: false }, [Validators.required, Validators.nullValidator, CustomValidators.IsNullorEmpty]]
+    });
+  }
 }
 
 

@@ -5,15 +5,5 @@
 
 export const environment = {
   production: false,
-  // webApiBaseUrl: 'http://odin-desa/BackOfficeApi/api/',
-  //webApiBaseUrl: 'http://localhost:8182/ManagerSystemAPI/api/',
-  webApiBaseUrl: 'http://localhost:59650/api/Proxy/',
-  //webApiBaseUrl: 'http://cfbog028:8990/BackOfficeProxy/api/Proxy/',
-  // webApiBaseUrl: 'http://cfbog028:8990/BackOfficeApi/api/',
-  //webApiBaseUrlPymes:'http://localhost:60755/',
-  portalType: 'ADM',
-  pageSize: 10,
-  currencyConfig: '$ ',
-  proxyToken: 'S878ASD89-A78ASD789-PO1U2DGHA',
-  loadDocumentProducts : [6,53]
+  webApiBaseUrl: 'https://localhost:44363',
 };

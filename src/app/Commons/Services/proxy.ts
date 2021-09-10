@@ -135,8 +135,7 @@ export class Proxy {
     }
 
     const headers = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'ProxyToken': environment.proxyToken
+      'Access-Control-Allow-Origin': '*'
     });
     const params = new HttpParams({ fromString: search });
     const result = new HttpRequest<any>(
@@ -162,7 +161,6 @@ export class Proxy {
       'currentSesId': localStorage.getItem('sesId_adm').toString(),
       'currentUser': localStorage.getItem('user_adm').toString(),
       'Access-Control-Allow-Origin': '*',
-      'ProxyToken': environment.proxyToken,
       'urlGetRequest': relativeUrl
     });
 

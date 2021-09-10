@@ -4,9 +4,8 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { User } from '../../../Commons/Entities/user';
 import { AuthenticationService } from '../../../Administration/Components/Authentication/Services/authentication.service';
 import { CloseSessionMoIn } from '../../../Administration/Components/Authentication/MethodParameters/closeSessionMoIn';
-import { CloseSessionMoOut } from '../../../Administration/Components/Authentication/MethodParameters/closeSessionMoOut';
 import { Result } from '../../../Commons/Classes/result';
-import { Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -23,6 +22,11 @@ export class NavigationComponent implements OnInit, AfterViewInit {
     this.user = JSON.parse(localStorage.getItem('user_adm'));
     if (this.user != null) {
       this.avatar = atob(this.user.usr_avatar);
+    }
+    else{ //TODO Borrar
+      this.user = new User();
+      this.user.usr_fullName = 'Pepito Perez'
+      this.user.usr_email = 'user@email.com'
     }
   }
 

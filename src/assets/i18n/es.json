@@ -6,15 +6,28 @@
   "administration.authentication.login.label.title" : "DevOps Dirección de Desarrollo",
   "administration.authentication.login.label.user" : "Usuario",
 
+  "administration.authentication.register.button.register" : "Registrarse",
+  "administration.authentication.register.label.title" : "Registro",
+  "administration.authentication.register.label.name" : "Nombre completo",
+  "administration.authentication.register.label.psw" : "Contraseña",
+  "administration.authentication.register.label.changePsw" : "Cambiar contraseña",
+
   "home.label.title" : "DevOps - Dirección de Desarrollo",
 
-
-  "menu.administration.home.title": "Home",
-  "menu.administration.home.records": "Registros",
+  "menu.administration.indicatives": "Indicativos",
+  "menu.administration.kpi": "Registros KPI",
+  "menu.administration.home": "Home",
+  "menu.administration.records": "Registros",
+  "menu.administration.users": "Usuarios",
 
   "route.breadcrumb.management.home.title": "Home",
+  "route.breadcrumb.management.indivatives.title": "Indicativos",
 
-  "general.validations.requiredField": "El campo es obligatorio"
+  "general.email.label": "Correo electrónico",
+  "general.select.label": "Seleccione",
+  "general.validations.requiredField": "El campo es obligatorio",
+
+  "navigation.menu.label.logOut": "Cerrar sesión"
 
 }
 

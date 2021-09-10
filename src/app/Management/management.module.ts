@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../Shared/shared.module';
 import { MANAGEMENT_ROUTES } from './management.routing';
 import { TranslateModule } from '@ngx-translate/core';
+import { CommonService } from '../Commons/Services/common.service';
 
 @NgModule({
   imports: [
@@ -16,8 +17,9 @@ import { TranslateModule } from '@ngx-translate/core';
     TranslateModule,
     ReactiveFormsModule
   ],
-  declarations: [
-
+  declarations: [ ],
+  providers: [
+    CommonService
   ]
 })
 export class ManagementModule { }

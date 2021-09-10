@@ -8,6 +8,12 @@ const ManagementRoutes: Routes = [
     // canActivate: [AuthGuard],
     component: FullComponent,
     loadChildren: () => import('./Components/Home/home.module').then(module => module.HomeModule)
+  },
+  {
+    path: 'Indicatives',
+    // canActivate: [AuthGuard],
+    component: FullComponent,
+    loadChildren: () => import('./Components/Indivatives/indicatives.module').then(module => module.IndicativeModule)
   }
 ];
 

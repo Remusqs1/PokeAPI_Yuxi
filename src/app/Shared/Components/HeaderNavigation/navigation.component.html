@@ -52,15 +52,7 @@
         <!-- Profile -->
         <!-- ============================================================== -->
         <li class="nav-item dropdown" ngbDropdown placement="bottom-right">
-          <a
-            ngbDropdownToggle
-            class="nav-link dropdown-toggle text-muted waves-effect waves-dark"
-            href="javascript:void(0)"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            <!-- <img src="assets/images/users/1.jpg" alt="user" class="profile-pic" /> -->
+          <a ngbDropdownToggle class="nav-link dropdown-toggle text-muted waves-effect waves-dark" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <h4 style="color: white">
               <em *ngIf="!avatar" class="fa fa-id-card"></em>
               {{ user?.usr_userName }}
@@ -71,53 +63,24 @@
             <ul class="dropdown-user">
               <li>
                 <div class="dw-user-box">
-                  <!-- <div class="u-img">
-                                        <img src="assets/images/users/1.jpg" alt="user">
-                                    </div> -->
                   <div class="u-text">
                     <h4>{{ user?.usr_userName }}</h4>
                     <p class="text-muted">Nombre:{{ user?.usr_fullName }}</p>
-                    <p class="text-muted">
-                      Correo electrónico:{{ user?.usr_email }}
-                    </p>
-                    <p class="text-muted">
-                      Compañia:{{
-                        user?.usr_companyID === 1
-                          ? 'Credivalores'
-                          : 'Credifinanciera'
-                      }}
-                    </p>
-                    <p class="text-muted">Role:{{ user?.usr_role }}</p>
-                    <!-- <a href="pages-profile.html" class="btn btn-rounded btn-danger btn-sm">View
-                                            Profile</a> -->
+                    <p class="text-muted"> Correo electrónico:{{ user?.usr_email }} </p>
                   </div>
                 </div>
               </li>
               <li role="separator" class="divider"></li>
               <li (click)="changePassword()">
-                <a>
-                  <em class="fa fa-key"></em>
-                  {{
-                    'navigatiion.userMenu.changePassword.label' | translate
-                  }}</a
-                >
+                <a> <em class="fa fa-key"></em> {{ 'administration.authentication.register.label.changePsw' | translate }} </a>
               </li>
               <li (click)="closeSesion()">
-                <a href="#">
-                  <em class="fa fa-power-off"></em>
-                  {{ 'navigatiion.userMenu.logout.label' | translate }}</a
-                >
+                <a href="#"> <em class="fa fa-power-off"></em> {{ 'navigation.menu.label.logOut' | translate }} </a >
               </li>
             </ul>
           </div>
         </li>
-        <!-- ============================================================== -->
-        <!-- End Profile -->
-        <!-- ============================================================== -->
       </ul>
-      <!-- ============================================================== -->
-      <!-- End User profile -->
-      <!-- ============================================================== -->
     </div>
   </nav>
 </header>

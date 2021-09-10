@@ -2,7 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './Components/Login/login.component';
 import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
 import { ChangePasswordComponent } from './Components/change-password/change-password.component';
-
+import { RegisterComponent } from './Components/Register/register.component';
 
 const AuthenticationRoutes: Routes = [
   {
@@ -20,6 +20,10 @@ const AuthenticationRoutes: Routes = [
   {
     path: 'ChangePassword/:id',
     component: ChangePasswordComponent
+  },
+  {
+    path: 'Register',
+    component: RegisterComponent
   }
 ];
 
