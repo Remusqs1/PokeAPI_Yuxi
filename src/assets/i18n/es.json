@@ -14,10 +14,15 @@
 
   "home.label.title" : "DevOps - Dirección de Desarrollo",
 
+  "menu.administration.cells": "Células de desarrollo",
+  "menu.administration.home": "Home",
   "menu.administration.indicatives": "Indicadores",
   "menu.administration.kpi": "Registros KPI",
-  "menu.administration.home": "Home",
+  "menu.administration.permissions": "Permisos",
+  "menu.administration.projects": "Proyectos",
+  "menu.administration.profiles": "Perfil",
   "menu.administration.records": "Registros",
+  "menu.administration.title": "Administración",
   "menu.administration.users": "Usuarios",
 
   "route.breadcrumb.management.home.title": "Home",

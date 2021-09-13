@@ -13,7 +13,7 @@ const ManagementRoutes: Routes = [
     path: 'Indicatives',
     // canActivate: [AuthGuard],
     component: FullComponent,
-    loadChildren: () => import('./Components/Indivatives/indicatives.module').then(module => module.IndicativeModule)
+    loadChildren: () => import('./Components/Indicatives/indicatives.module').then(module => module.IndicativeModule)
   }
 ];
 
