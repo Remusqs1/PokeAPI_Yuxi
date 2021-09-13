@@ -10,6 +10,7 @@ import { StatusPipe } from '../../../Shared/Pipes/statusPipe';
 import { TranslatePipe } from '@ngx-translate/core';
 import { IndicativesComponent } from './Components/indicatives.component';
 import { IndicativesFormsService } from './Services/indicatives.forms.service';
+import { ManagementService } from '../../Services/management.service';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { IndicativesFormsService } from './Services/indicatives.forms.service';
   providers: [
     IndicativesFormsService,
     StatusPipe,
-    TranslatePipe
+    TranslatePipe,
+    ManagementService
   ]
 })
 export class IndicativeModule { }

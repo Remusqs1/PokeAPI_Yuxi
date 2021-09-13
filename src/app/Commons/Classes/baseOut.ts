@@ -5,6 +5,5 @@ import { Result } from './result';
 export class BaseOut extends Serializable {
 
   public result: Result;
-  public message: string;
 
 }

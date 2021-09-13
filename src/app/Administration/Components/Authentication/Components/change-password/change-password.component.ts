@@ -134,93 +134,93 @@ export class ChangePasswordComponent implements OnInit {
 
   onChangePassword() {
 
-    this.hasError = false;
-    this.showLoader = true;
-    console.log(this.resetpasswordForm);
-    if (this.resetpasswordForm.valid) {
-      this.changePassword.usr_OldPassword = this.resetpasswordForm.controls.usr_OldPassword.value;
-      this.changePassword.usr_password = this.resetpasswordForm.controls.usr_password1.value;
-      if (!this.pass2NoValido) {
-        this.authenticationService.changePassword(this.changePassword).subscribe((response) => {
-          if (response.result == Result.Success) {
-            this.messages.showMessages(response.message, 'SUCCESS');
-            localStorage.clear();
-            setTimeout(() => {
-              this.routes.navigateByUrl('/');
+    // this.hasError = false;
+    // this.showLoader = true;
+    // console.log(this.resetpasswordForm);
+    // if (this.resetpasswordForm.valid) {
+    //   this.changePassword.usr_OldPassword = this.resetpasswordForm.controls.usr_OldPassword.value;
+    //   this.changePassword.usr_password = this.resetpasswordForm.controls.usr_password1.value;
+    //   if (!this.pass2NoValido) {
+    //     this.authenticationService.changePassword(this.changePassword).subscribe((response) => {
+    //       if (response.result == Result.Success) {
+    //         this.messages.showMessages(response.message, 'SUCCESS');
+    //         localStorage.clear();
+    //         setTimeout(() => {
+    //           this.routes.navigateByUrl('/');
 
-            }, 3000);
-          }
-          else if (response.result == Result.NoRecords) {
-            this.messages.showMessages(response.message, 'ERROR');
-          }
-          else if (response.result == Result.Error) {
-            this.messages.showMessages(response.message, 'ERROR');
-          }
+    //         }, 3000);
+    //       }
+    //       else if (response.result == Result.NoRecords) {
+    //         this.messages.showMessages(response.message, 'ERROR');
+    //       }
+    //       else if (response.result == Result.Error) {
+    //         this.messages.showMessages(response.message, 'ERROR');
+    //       }
 
-        })
-      }
+    //     })
+    //   }
 
-    } else {
+    // } else {
 
 
-      this.hasError = true;
-      this.showLoader = false;
+    //   this.hasError = true;
+    //   this.showLoader = false;
 
-    }
+    // }
 
 
   }
 
   onResetPassword() {
-    this.hasError = false;
-    this.showLoader = true;
-    console.log('resetpasswordForm', this.resetpasswordForm.valid);
-    if (this.resetpasswordForm.valid) {
-      this.changePassword.usr_code = this.route.snapshot.paramMap.get('id');
-      this.changePassword.usc_code = this.resetpasswordForm.controls.usc_code.value;
-      this.changePassword.usr_password = this.resetpasswordForm.controls.usr_password1.value;
+    // this.hasError = false;
+    // this.showLoader = true;
+    // console.log('resetpasswordForm', this.resetpasswordForm.valid);
+    // if (this.resetpasswordForm.valid) {
+    //   this.changePassword.usr_code = this.route.snapshot.paramMap.get('id');
+    //   this.changePassword.usc_code = this.resetpasswordForm.controls.usc_code.value;
+    //   this.changePassword.usr_password = this.resetpasswordForm.controls.usr_password1.value;
 
-      this.authenticationService.changePassword(this.changePassword).subscribe(response => {
-        console.log('response', response);
-        if (response.result === Result.Success) {
-          this.goLogin();
-        } else if (response.result === 3) {
-          this.messages.showMessages('administration.authentication.change-password.messageInvalidData', 'ERROR');
-        } else {
-          this.messages.showMessages('administration.authentication.change-password.error.messageInvalidData', 'ERROR');
-        }
-        this.showLoader = false;
-      });
-    } else {
-      this.hasError = true;
-      this.showLoader = false;
+    //   this.authenticationService.changePassword(this.changePassword).subscribe(response => {
+    //     console.log('response', response);
+    //     if (response.result === Result.Success) {
+    //       this.goLogin();
+    //     } else if (response.result === 3) {
+    //       this.messages.showMessages('administration.authentication.change-password.messageInvalidData', 'ERROR');
+    //     } else {
+    //       this.messages.showMessages('administration.authentication.change-password.error.messageInvalidData', 'ERROR');
+    //     }
+    //     this.showLoader = false;
+    //   });
+    // } else {
+    //   this.hasError = true;
+    //   this.showLoader = false;
 
-    }
+    // }
 
   }
 
   codeVerification() {
 
-    this.showLoader = true;
-    this.codeExistValidation.usr_code = this.route.snapshot.paramMap.get('id');
-    this.codeExistValidation.usc_code = this.resetpasswordForm.controls.usc_code.value;
+    // this.showLoader = true;
+    // this.codeExistValidation.usr_code = this.route.snapshot.paramMap.get('id');
+    // this.codeExistValidation.usc_code = this.resetpasswordForm.controls.usc_code.value;
 
-    if (this.codeExistValidation.usc_code.length == 8) {
-      this.authenticationService.codeValidation(this.codeExistValidation).subscribe(response => {
-        console.log('response', response);
-        if (response.result === Result.Success) {
+    // if (this.codeExistValidation.usc_code.length == 8) {
+    //   this.authenticationService.codeValidation(this.codeExistValidation).subscribe(response => {
+    //     console.log('response', response);
+    //     if (response.result === Result.Success) {
 
-        } else if (response.result === 3) {
-          this.messages.showMessages('administration.authentication.change-password.messageInvalidData', 'ERROR');
-        } else {
-          this.messages.showMessages('administration.authentication.change-password.error.messageInvalidData', 'ERROR');
-        }
-        this.showLoader = false;
-      });
-    } else {
-      this.messages.showMessages('administration.authentication.change-password.error.messageLenghtCode', 'ERROR');
-      this.showLoader = false;
-    }
+    //     } else if (response.result === 3) {
+    //       this.messages.showMessages('administration.authentication.change-password.messageInvalidData', 'ERROR');
+    //     } else {
+    //       this.messages.showMessages('administration.authentication.change-password.error.messageInvalidData', 'ERROR');
+    //     }
+    //     this.showLoader = false;
+    //   });
+    // } else {
+    //   this.messages.showMessages('administration.authentication.change-password.error.messageLenghtCode', 'ERROR');
+    //   this.showLoader = false;
+    // }
 
   }
 

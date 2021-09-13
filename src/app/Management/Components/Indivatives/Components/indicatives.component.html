@@ -7,81 +7,100 @@
                     <button class="btn btn-circle btn-sm btn-primary m-r-5" (click)="search()">
                         <i aria-hidden="true" class="icon-magnifier text"></i>
                     </button>
+                    <button class="btn btn-circle btn-sm btn-primary m-r-5" (click)="createIndicative()">
+                        <i aria-hidden="true" class="ti-plus text"></i>
+                    </button>
                 </div>
             </div>
             <div class="card-body">
                 <form autocomplete="off" [formGroup]="indicativeForm">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label>Nombre de proyecto</label>
                             <input type="text" name="projectName" formControlName="projectName" class="form-control">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label>Nombre de célula</label>
                             <input type="text" name="developCell" formControlName="developCell" class="form-control">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label>Estatus</label>
                             <select class="form-control custom-select" id="status" name="status" formControlName="status">
-                                <option selected [ngValue]="undefined">
+                                <option selected [ngValue]="undefined" disabled>
                                     {{'general.select.label' | translate}}</option>
                                 <option *ngFor="let type of indicativeStatusList" [ngValue]=type.cat_code>
                                     {{type.cat_description}}
                                 </option>
                             </select>  
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label>Calidad del requisito</label>
                             <input type="text" name="requirementQuality" formControlName="requirementQuality" class="form-control">
                         </div>
-                        <div class="col-md-4">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
                             <label>Calidad del software</label>
                             <input type="text" name="softwareQuality" formControlName="softwareQuality" class="form-control">
                         </div>
-                        <div class="col-md-4"> </div>
+                        <div class="col-3">
+                            <label for="startDate" class="colorTitle">Fecha de inicio</label>
+                            <div class="input-group">
+                                <div class="input-group-append">
+                                    <button (click)="d1.toggle()" class="btn btn-outline-secondary calendar fa fa-calendar" type="button"></button>
+                                </div>
+                                <input type="text" class="form-control" id="startDate" formControlName="startDate" name="startDate" ngbDatepicker #d1="ngbDatepicker" [readonly]="true" placeholder="dd/mm/aaaa">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <label for="endDate" class="colorTitle">Fecha final</label>
+                            <div class="input-group">
+                                <div class="input-group-append">
+                                    <button (click)="d2.toggle()" class="btn btn-outline-secondary calendar fa fa-calendar" type="button"></button>
+                                </div>
+                                <input type="text" class="form-control" id="endDate" formControlName="endDate" name="endDate" ngbDatepicker #d2="ngbDatepicker" [readonly]="true" placeholder="dd/mm/aaaa">
+                            </div>
+                        </div>
                     </div>
                     <br/>
                     <h3>Índice de defectos por capa</h3>
                     <hr>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <label>C. Canales</label>
                             <input type="text" name="bugChannels" formControlName="bugChannels" class="form-control">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <label>C. Integraciones</label>
                             <input type="text" name="bugIntegrations" formControlName="bugIntegrations" class="form-control">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label>C. Apoyo al negocio</label>
                             <input type="text" name="bugBusSupport" formControlName="bugBusSupport" class="form-control">
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label>C. Core del negocio</label>
                             <input type="text" name="bugCore" formControlName="bugCore" class="form-control">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <label>C. de Datos</label>
                             <input type="text" name="bugData" formControlName="bugData" class="form-control">
                         </div>
                     </div>
-                    <br/>
+                    
+                    <br />
                     <h3>Análisis de Código Estático</h3>
                     <hr>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label>Bug</label>
                             <input type="text" name="bugs" formControlName="bugs" class="form-control">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label>Vulneravilidades</label>
                             <input type="text" name="vulnerability" formControlName="vulnerability" class="form-control">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label>Código duplicado</label>
                             <input type="text" name="duplicated" formControlName="duplicated" class="form-control">
                         </div>
@@ -108,24 +127,24 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label>Cumplimiento (Desarrollo)</label>
                             <input type="text" name="accomplishDevelop" formControlName="accomplishDevelop" class="form-control">
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label>Cumplimiento pruebas</label>
                             <input type="text" name="accomplishQA" formControlName="accomplishQA" class="form-control">
                         </div>
                         <div class="col-md-4">
-                            <label>Cumplimiento estimación de casos de prueba ANS Interno</label>
+                            <label>Cump. estimación de casos ANS Interno</label>
                             <input type="text" name="internalAns" formControlName="internalAns" class="form-control">
                         </div></div>
                 </form>
-                <!-- <div class="table table-responsive smart-table" style="margin-left: 1%;" *ngIf="totalRecords > 0">
-                    <smart-table #smartTable [settings]="settings" [rowCount]="totalRecords" [source]="listDocuments"
+                <div class="table table-responsive smart-table" style="margin-left: 1%;">
+                    <smart-table #smartTable [settings]="settings" [rowCount]="totalRecords" [source]="source"
                         (custom)="onCustomAction($event)" [labelNoRecords]="'general.noRecords'">
                     </smart-table>
-                </div> -->
+                </div>
             </div>
         </div>
     </div>

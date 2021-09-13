@@ -14,7 +14,7 @@
 
   "home.label.title" : "DevOps - Dirección de Desarrollo",
 
-  "menu.administration.indicatives": "Indicativos",
+  "menu.administration.indicatives": "Indicadores",
   "menu.administration.kpi": "Registros KPI",
   "menu.administration.home": "Home",
   "menu.administration.records": "Registros",
@@ -24,6 +24,7 @@
   "route.breadcrumb.management.indivatives.title": "Indicativos",
 
   "general.email.label": "Correo electrónico",
+  "general.noRecords": "No se encontraron registros",
   "general.select.label": "Seleccione",
   "general.validations.requiredField": "El campo es obligatorio",
 

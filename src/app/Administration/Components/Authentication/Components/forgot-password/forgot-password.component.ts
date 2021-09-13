@@ -64,19 +64,19 @@ export class ForgotPasswordComponent implements OnInit {
     if (this.resetForm.valid) {
       this.resetPassword.usr_email = this.resetForm.controls.usr_email.value;
 
-      this.authenticationService.resetPassword(this.resetPassword).subscribe(response => {
-        console.log('response', response);
-        if (response.result === Result.Success) {
-          this.messages.showMessages('administration.authentication.forgot-password.success.messageInvalidData', 'SUCCESS');
-          setTimeout(() => {
-            this.backLogin();
-          }, 5000);
+      // this.authenticationService.resetPassword(this.resetPassword).subscribe(response => {
+      //   console.log('response', response);
+      //   if (response.result === Result.Success) {
+      //     this.messages.showMessages('administration.authentication.forgot-password.success.messageInvalidData', 'SUCCESS');
+      //     setTimeout(() => {
+      //       this.backLogin();
+      //     }, 5000);
 
-        } else if (response.result === 4) {
-          this.messages.showMessages('administration.authentication.forgot-password.error.messageInvalidData', 'ERROR');
-        }
-        this.showLoader = false;
-      });
+      //   } else if (response.result === 4) {
+      //     this.messages.showMessages('administration.authentication.forgot-password.error.messageInvalidData', 'ERROR');
+      //   }
+      //   this.showLoader = false;
+      // });
     } else {
       this.hasError = true;
       this.showLoader = false;

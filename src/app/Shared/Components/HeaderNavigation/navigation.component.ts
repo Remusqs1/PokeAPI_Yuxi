@@ -40,15 +40,15 @@ export class NavigationComponent implements OnInit, AfterViewInit {
     let getCloseSessionIn = new CloseSessionMoIn();
     localStorage.removeItem('username');
 
-    this.auth.closeSession(getCloseSessionIn)
-      .subscribe(response => {
-        if (response.result == Result.Success) {
-          localStorage.removeItem('sesId_adm');
-          localStorage.removeItem('user_adm');
-          localStorage.removeItem('profile');
-          this.router.navigate(['/']);
-        }
-      });
+    // this.auth.closeSession(getCloseSessionIn)
+    //   .subscribe(response => {
+    //     if (response.result == Result.Success) {
+    //       localStorage.removeItem('sesId_adm');
+    //       localStorage.removeItem('user_adm');
+    //       localStorage.removeItem('profile');
+    //       this.router.navigate(['/']);
+    //     }
+    //   });
   }
 
   changePassword() {

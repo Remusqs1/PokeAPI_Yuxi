@@ -9,7 +9,7 @@
         <strong>
           <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
           <!-- Dark Logo icon -->
-          <!-- <img src="assets/images/icono.png" alt="logo" class="dark-logo" /> -->
+          <img src="assets/images/icono.png" alt="logo" class="dark-logo" />
           <!-- Light Logo icon -->
           <!-- <img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo" /> -->
         </strong>
@@ -17,7 +17,7 @@
         <!-- Logo text -->
         <span>
           <!-- dark Logo text -->
-          <!-- <img src="assets/images/logo.png" alt="homepage" class="dark-logo" /> -->
+          <img src="assets/images/logo.png" alt="homepage" class="dark-logo" />
           <!-- Light Logo text -->
           <!-- <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage" /> -->
         </span>
@@ -52,7 +52,15 @@
         <!-- Profile -->
         <!-- ============================================================== -->
         <li class="nav-item dropdown" ngbDropdown placement="bottom-right">
-          <a ngbDropdownToggle class="nav-link dropdown-toggle text-muted waves-effect waves-dark" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a
+            ngbDropdownToggle
+            class="nav-link dropdown-toggle text-muted waves-effect waves-dark"
+            href="javascript:void(0)"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <!-- <img src="assets/images/users/1.jpg" alt="user" class="profile-pic" /> -->
             <h4 style="color: white">
               <em *ngIf="!avatar" class="fa fa-id-card"></em>
               {{ user?.usr_userName }}
@@ -80,7 +88,13 @@
             </ul>
           </div>
         </li>
+        <!-- ============================================================== -->
+        <!-- End Profile -->
+        <!-- ============================================================== -->
       </ul>
+      <!-- ============================================================== -->
+      <!-- End User profile -->
+      <!-- ============================================================== -->
     </div>
   </nav>
 </header>

@@ -28,9 +28,59 @@ export class IndicativesFormsService {
             accomplishDevelop: [{ value: undefined, disabled: false }, []],
             internalAns: [{ value: undefined, disabled: false }, []],
             accomplishQA: [{ value: undefined, disabled: false }, []],
+            startDate: [{ value: undefined, disabled: false }, []],
+            endDate: [{ value: undefined, disabled: false }, []],
         });
     }
 
+    getIndicativesConfigDataTable() {
 
+        const settings = {
+            actions: {
+                custom: [
+                    {
+                        name: 'download',
+                        icon: '<i class="ti-import text-credi m-r-10"></i>',
+                        title: "Descargar"
+                    },
+                    {
+                        name: 'view',
+                        icon: '<i class="ti-eye text-credi m-r-10"></i>',
+                        title: "Ver"
+                    },
+                    {
+                        name: 'edit',
+                        icon: '<i class="ti-pencil text-credi m-r-10"></i>',
+                        title: "editar"
+                    }
+                ],
+                add: false,
+                edit: false,
+                copy: false,
+                delete: false,
+                position: 'left',
+                columnTitle: '',
+            },
+            hideSubHeader: true,
+            mode: 'external',
+        };
+
+        const columns: any = {
+            projectName: {
+                title: 'Nombre de proyecto',
+                filter: false
+            },
+            developCell: {
+                title: 'Nombre de célula',
+                filter: false
+            },
+            status: {
+                title: 'Estatus',
+                filter: false
+            }
+        };
+        (<any>settings).columns = columns;
+        return settings;
+    }
 
 }
