@@ -12,7 +12,17 @@
   "administration.authentication.register.label.psw" : "Contraseña",
   "administration.authentication.register.label.changePsw" : "Cambiar contraseña",
 
+  "devCells.label.cellName" : "Nombre de la célula",
+
   "home.label.title" : "DevOps - Dirección de Desarrollo",
+
+  "general.email.label": "Correo electrónico",
+  "general.noRecords": "No se encontraron registros",
+  "general.select.label": "Seleccione",
+  "general.validations.requiredField": "El campo es obligatorio",
+  "general.delete": "Eliminar",
+  "general.detail": "Detalle",
+  "general.edit": "Editar",
 
   "menu.administration.cells": "Células de desarrollo",
   "menu.administration.home": "Home",
@@ -25,15 +35,11 @@
   "menu.administration.title": "Administración",
   "menu.administration.users": "Usuarios",
 
+  "navigation.menu.label.logOut": "Cerrar sesión",
+
   "route.breadcrumb.management.home.title": "Home",
-  "route.breadcrumb.management.indivatives.title": "Indicativos",
-
-  "general.email.label": "Correo electrónico",
-  "general.noRecords": "No se encontraron registros",
-  "general.select.label": "Seleccione",
-  "general.validations.requiredField": "El campo es obligatorio",
-
-  "navigation.menu.label.logOut": "Cerrar sesión"
+  "route.breadcrumb.management.devCells.title": "Células de desarrollo",
+  "route.breadcrumb.management.indivatives.title": "Indicativos"
 
 }
 
