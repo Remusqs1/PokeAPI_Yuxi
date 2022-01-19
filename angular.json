@@ -33,6 +33,7 @@
                             "node_modules/ngx-toastr/toastr.css",
                             "node_modules/quill/dist/quill.snow.css",
                             "node_modules/dragula/dist/dragula.css",
+                            "node_modules/ngx-toastr/toastr.css",
                             "src/assets/scss/style.scss"
                         ],
                         "scripts": [

@@ -2,6 +2,7 @@ import { Component, OnInit, } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Pokemon } from '../../../MethodParameters/pokemon';
 import { PokeService } from '../../Home/Services/pokeService.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-details',
@@ -13,28 +14,34 @@ export class DetailsComponent implements OnInit {
     pokemon: Pokemon;
 
     constructor(private activatedRoute: ActivatedRoute, private pokeService: PokeService,
-                private routes: Router) { }
+                private routes: Router, private toastr: ToastrService) { }
 
     ngOnInit() {
         this.activatedRoute.queryParamMap.subscribe(params => {
             let paramKey = params.get('id');
 
-            if(paramKey !== null && paramKey !== undefined && paramKey !== ""){
-                this.getPokemon(+paramKey);
+            if (paramKey !== null && paramKey !== undefined && paramKey !== "") {
+                this.getPokemon(paramKey);
             }
-            else{
-                this.goLogin();
+            else {
+                let paramName = params.get('searchValue');
+                if (paramName !== null && paramName !== undefined && paramName !== "") {
+                    this.getPokemon(paramName);
+                }
+                else {
+                    this.goLogin();
+                }
             }
         })
     }
 
-    getPokemon(id: number) {
+    getPokemon(input) {
         this.pokemon = new Pokemon();
 
-        this.pokeService.getPokes(id).subscribe(
+        this.pokeService.getPokes(input).subscribe(
             res => {
                 console.log(res);
-                
+
                 this.pokemon = new Pokemon();
                 this.pokemon.id = res.id;
                 this.pokemon.name = res.name;
@@ -56,15 +63,17 @@ export class DetailsComponent implements OnInit {
             },
             err => {
                 console.log(err);
+                this.pokemon = null;
+                this.toastr.error('No Pokémon Found with that name!', 'Error!');
             }
         )
     }
 
-    goLogin(){
+    goLogin() {
         this.routes.navigate(['']);
     }
 
-    goHome(){
+    goHome() {
         this.routes.navigate(['Home']);
     }
 

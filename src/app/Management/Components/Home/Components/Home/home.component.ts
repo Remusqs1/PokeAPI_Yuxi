@@ -35,7 +35,8 @@ export class HomeComponent implements OnInit {
           res.types.forEach(pokeType => {
             this.pokemon.type.push(pokeType.type);
           });
-          this.pokemonList.push(this.pokemon)
+          this.pokemonList.push(this.pokemon);
+          this.pokemonList = this.pokemonList.sort((a, b) => parseFloat(a.id.toString()) - parseFloat(b.id.toString()));
         },
         err => {
           console.log(err);
@@ -46,7 +47,6 @@ export class HomeComponent implements OnInit {
   }
 
   onClickPokemon(id: number) {
-    console.log(id);
     this.routes.navigate(['Details'], { queryParams: { id } });
   }
 

@@ -6,6 +6,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { SharedModule } from '../Shared/shared.module';
 import { COMMONS_ROUTES } from './commons.routing';
+import { NavBarComponent } from './Components/NavBar/navbar.component';
 
 @NgModule({
   imports: [
@@ -16,8 +17,10 @@ import { COMMONS_ROUTES } from './commons.routing';
     COMMONS_ROUTES
   ],
   declarations: [
+    NavBarComponent
   ],
   exports: [
+    NavBarComponent
   ],
   providers: [
 

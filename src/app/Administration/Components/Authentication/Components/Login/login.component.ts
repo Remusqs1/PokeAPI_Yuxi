@@ -29,32 +29,8 @@ export class LoginComponent implements OnInit {
     this.hasError = false;
     this.showLoader = true;
     if (this.loginForm.valid) {
-        // this.login.usr_userName = this.loginForm.controls.user.value;
-        // this.login.usr_password = this.loginForm.controls.password.value;
-        // // this.login.usr_type = this.loginForm.controls.usr_type.value;
-
-        // this.authenticationService.login(this.login).subscribe(response => {
-        //     if (response.result === Result.Success) {
-        //         localStorage.setItem('sesId_adm', response.sessionId);
-        //         localStorage.setItem('user_adm', JSON.stringify(response.user));
-
-        //         let userIn: GetUserIn = new GetUserIn();
-        //   userIn.usr_userName = response.user.usr_userName;
-        //   this.userService.getUser(userIn).subscribe(resp => {
-        //       if (resp.result === Result.Success) {
-        //           localStorage.setItem('user_info', JSON.stringify(resp.resultGetUser));
-        //     }
-        //   });
-    
-
-        // } else if (response.result === Result.UserBlocked) {
-        //     this.messages.showMessages('administration.authentication.login.error.messageUserBlocked', 'ERROR');
-        // } else {
-        //     this.messages.showMessages('administration.authentication.login.error.messageInvalidData', 'ERROR');
-        // }
-        // this.showLoader = false;
+        //LocalStorage
         this.goDashboard();
-      // });
     } else {
         this.hasError = true;
         this.showLoader = false;
@@ -63,17 +39,6 @@ export class LoginComponent implements OnInit {
 
   goDashboard() {
     this.routes.navigate(['Home']);
-  }
-
-  goChangePasword() {
-    console.log("ChangePassword");
-    // localStorage.setItem('IslogToChangePassword', "True");
-    // this.routes.navigate(['ChangePassword', 'logged']);
-  }
-
-  goForgotPassword() {
-    console.log("ResetPassword");
-    // this.routes.navigate(['ResetPassword']);
   }
 
   goRegister() {
