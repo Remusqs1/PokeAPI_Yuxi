@@ -6,7 +6,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { SharedModule } from '../Shared/shared.module';
 import { COMMONS_ROUTES } from './commons.routing';
-import { Timepicker } from './Components/TimePicker/timepicker';
 
 @NgModule({
   imports: [
@@ -17,10 +16,8 @@ import { Timepicker } from './Components/TimePicker/timepicker';
     COMMONS_ROUTES
   ],
   declarations: [
-    Timepicker
   ],
   exports: [
-    Timepicker
   ],
   providers: [
 

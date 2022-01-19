@@ -26,13 +26,9 @@ import { DateFormatPipe } from './Pipes/dateFormatPipe';
 import { StatusPipe } from './Pipes/statusPipe';
 import { CurrencyFormatPipe } from './Pipes/currencyFormatPipe';
 import { SpecialCharsPipe } from './Pipes/SpecialCharsPipe';
-import { AuthenticationService } from '../Administration/Components/Authentication/Services/authentication.service';
-import { GenerateDocumentsComponent } from '../Shared/Components/GenerateDocuments/generateDocuments.component';
-import { GenerateDocumentService } from './Components/GenerateDocuments/services/generateDocument.service';
 import { ValidateSesion } from './Services/validateSesion.component';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
-
 
 @NgModule({
   imports: [
@@ -69,7 +65,6 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     StatusPipe,
     CurrencyFormatPipe,
     SpecialCharsPipe,
-    GenerateDocumentsComponent,
     ValidateSesion,
    
   ],
@@ -98,13 +93,10 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     CurrencyFormatPipe,
     SpecialCharsPipe,
     TBodyModule,
-    GenerateDocumentsComponent,
     
   ],
   providers: [
     TranslateService,
-    AuthenticationService,
-    GenerateDocumentService
   ]
 })
 export class SharedModule { }

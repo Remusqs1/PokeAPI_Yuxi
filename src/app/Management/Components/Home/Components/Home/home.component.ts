@@ -11,8 +11,8 @@ import { PokeService } from '../../Services/pokeService.service';
 })
 export class HomeComponent implements OnInit {
 
-  pokemonList : Array<Pokemon>
-  pokemon : Pokemon;
+  pokemonList: Array<Pokemon>
+  pokemon: Pokemon;
   searchQuantity = environment.searchQuantity;
 
   constructor(private pokeService: PokeService, private routes: Router) { }
@@ -45,9 +45,17 @@ export class HomeComponent implements OnInit {
     console.log(this.pokemonList);
   }
 
-  onClickPokemon(id : number){
+  onClickPokemon(id: number) {
     console.log(id);
-    this.routes.navigate(['Details'], {queryParams : {id}});
+    this.routes.navigate(['Details'], { queryParams: { id } });
+  }
+
+  goLogin() {
+    this.routes.navigate(['']);
+  }
+
+  goHome() {
+    this.routes.navigate(['Home']);
   }
 
 }

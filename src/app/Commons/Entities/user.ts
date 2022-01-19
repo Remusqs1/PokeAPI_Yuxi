@@ -1,11 +1,10 @@
 
-import { Serializable } from '../Classes/serializable';
 import { Profile } from './profile';
 import { DocumentType } from './documentType';
 import * as moment from 'moment';
 import { Company } from './company';
 
-export class User extends Serializable {
+export class User  {
 
   public usrID: number;
 

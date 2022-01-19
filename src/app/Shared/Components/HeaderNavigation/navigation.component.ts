@@ -2,9 +2,6 @@ import { Component, AfterViewInit, EventEmitter, Output, OnInit } from '@angular
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { User } from '../../../Commons/Entities/user';
-import { AuthenticationService } from '../../../Administration/Components/Authentication/Services/authentication.service';
-import { CloseSessionMoIn } from '../../../Administration/Components/Authentication/MethodParameters/closeSessionMoIn';
-import { Result } from '../../../Commons/Classes/result';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,7 +13,7 @@ export class NavigationComponent implements OnInit, AfterViewInit {
   public avatar: string;
   public config: PerfectScrollbarConfigInterface = {};
   user: User;
-  constructor(private router: Router, private modalService: NgbModal, private auth: AuthenticationService) { }
+  constructor(private router: Router, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('user_adm'));
@@ -37,8 +34,8 @@ export class NavigationComponent implements OnInit, AfterViewInit {
   closeSesion() {
     // localStorage.clear();
 
-    let getCloseSessionIn = new CloseSessionMoIn();
-    localStorage.removeItem('username');
+    // let getCloseSessionIn = new CloseSessionMoIn();
+    // localStorage.removeItem('username');
 
     // this.auth.closeSession(getCloseSessionIn)
     //   .subscribe(response => {
