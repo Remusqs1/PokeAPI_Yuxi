@@ -15,8 +15,12 @@
   color: #455a64;
 }
 
-.btn-credi {
-  background-color: #001c36 !important;
+.btn-yuxi {
+  background-color: #00fff7 !important;
+  color:#41255b !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: larger !important;
+  font-weight: bolder !important;
 }
 
 .text-credi {
@@ -33,6 +37,18 @@
   animation-duration: 0.1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
+}
+
+.yuxi-btn{
+  color: #00fff7 !important;
+}
+
+.card-yuxi:hover{
+  cursor: pointer;
+}
+
+.card {
+  border: 2px solid black;
 }
 
 @-webkit-keyframes fadeInDown {

@@ -1,16 +1,42 @@
-<div class="row row">
-  <div class="col-12">
-    <div class="card">
-      <div class="row m-2" style=" font-weight: bold; font-size: 25px; color: rgba(7, 70, 163, 0.897); " >
-        {{'home.label.title' | translate}}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">PokeAPI Yuxi Global</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+              <a class="nav-link" (click)="goHome()">Home</a>
+          </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+      <form class="form-inline my-2 my-lg-0 ml-1">
+          <button class="btn btn-outline-danger my-2 my-sm-0" (click)="goLogin()">Close Session</button>
+      </form>
+  </div>
+</nav>
+
+<div class="row ml-5 mt-2 pb-2" *ngIf="pokemonList.length > 0">
+  <div *ngFor="let pokemonItem of pokemonList" class="card-deck pt-2 pl-1">
+    <div class="card card-yuxi bg-light" style="width:200px;" (click)="onClickPokemon(pokemonItem.id)">
+      <div class="card-header">
+        <h3 class="card-title text-center text-capitalize font-weight-bold">{{pokemonItem.name}}</h3>
       </div>
-      <!-- <div class="row m-2">
-        <div class="apps-card" *ngFor="let item of listHomeConfig">
-          <a routerLink="{{ item.Path }}"></a>
-          <span class="apps-card-title">{{ item.OptionMenu }}</span>
-          <img class="apps-card-icon" [src]="item.Icon" alt="" />
-        </div>
-      </div> -->
+      <img class="card-img-top" src="{{pokemonItem.image}}" alt="Card image">
+      <div class="card-body">
+        <p class="card-text" *ngIf="pokemonItem.type.length > 1">Type : <label for="type"
+            class="text-capitalize">{{pokemonItem.type[0].name}}/{{pokemonItem.type[1].name}}</label>
+        </p>
+        <p class="card-text" *ngIf="pokemonItem.type.length === 1">Type : <label for="type"
+            class="text-capitalize">{{pokemonItem.type[0].name}}</label>
+        </p>
+      </div>
     </div>
   </div>
+
 </div>

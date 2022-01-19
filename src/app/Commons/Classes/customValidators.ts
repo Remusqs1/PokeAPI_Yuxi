@@ -214,7 +214,7 @@ export class CustomValidators {
     // }
   }
 
-  static EnailFormat(control: AbstractControl) {
+  static EmailFormat(control: AbstractControl) {
     if (control.value === null || control.value === undefined || control.value === '') {
       return null;
     }

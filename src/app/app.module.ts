@@ -27,12 +27,11 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthGuard } from './Shared/Services/auth.guard';
-import { SharedModule } from './Shared/shared.module';
 import { SpinnerServiceInterceptor } from './Commons/Services/spinnerService.interceptor';
 import { AngularImageViewerModule } from "angular-x-image-viewer";
 import { NgImageSliderModule } from 'ng-image-slider';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { SharedModule } from './Shared/shared.module';
 
 
 
@@ -50,8 +49,8 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    HttpClientModule,
     SharedModule,
+    HttpClientModule,
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
@@ -83,7 +82,6 @@ export function createTranslateLoader(http: HttpClient) {
       provide: LocationStrategy,
       useClass: HashLocationStrategy,
     },
-    AuthGuard,
   ],
   bootstrap: [AppComponent],
 })

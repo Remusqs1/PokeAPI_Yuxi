@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">PokeAPI Yuxi Global</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" (click)="goHome()">Home</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <form class="form-inline my-2 my-lg-0 ml-1">
+            <button class="btn btn-outline-danger my-2 my-sm-0" (click)="goLogin()">Close Session</button>
+        </form>
+    </div>
+</nav>
+
+<div class="row mt-2 pb-2 d-flex justify-content-center" *ngIf="pokemon !== null && pokemon !== undefined">
+    <div class="card-deck pt-2 col-lg-3">
+      <div class="card bg-light text-center">
+        <div class="card-header">
+          <h3 class="card-title text-center text-capitalize font-weight-bold">{{pokemon.name}}</h3>
+        </div>
+        <img class="card-img-top" src="{{pokemon.image}}" alt="Card image">
+        <div class="card-body">
+            <p class="card-text">#Id : {{pokemon.id}} </p>
+            <p class="card-text">Height : {{pokemon.height}} </p>
+            <p class="card-text">Weight : {{pokemon.weight}} </p>
+          <p class="card-text" *ngIf="pokemon.type !== undefined && pokemon.type.length > 1">Type : <label for="type"
+              class="text-capitalize">{{pokemon.type[0].name}}/{{pokemon.type[1].name}}</label>
+          </p>
+          <p class="card-text" *ngIf="pokemon.type !== undefined && pokemon.type.length === 1">Type : <label for="type"
+              class="text-capitalize">{{pokemon.type[0].name}}</label>
+          </p>
+
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Movement list
+          </button>
+          <div class="collapse" id="collapseExample">
+            <ul>
+                <li *ngFor="let move of pokemon.movList">
+                    {{move.name}}
+                </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>

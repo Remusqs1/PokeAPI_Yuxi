@@ -9,7 +9,7 @@ export class AuthenticationFormService {
 
   getLoginForm(): FormGroup {
     return this.formBuilder.group({
-      user: [{ value: undefined, disabled: false }, [Validators.required, Validators.nullValidator, CustomValidators.IsNullorEmpty]],
+      email: [{ value: undefined, disabled: false }, [Validators.required, Validators.nullValidator, CustomValidators.IsNullorEmpty, CustomValidators.EmailFormat]],
       psw: [{ value: undefined, disabled: false }, [Validators.required, Validators.nullValidator, CustomValidators.IsNullorEmpty]]
     });
   }
@@ -17,8 +17,9 @@ export class AuthenticationFormService {
   getRegisterForm(): FormGroup {
     return this.formBuilder.group({
       name: [{ value: undefined, disabled: false }, [Validators.required, Validators.nullValidator, CustomValidators.IsNullorEmpty]],
-      email: [{ value: undefined, disabled: false }, [Validators.required, Validators.nullValidator, CustomValidators.IsNullorEmpty, CustomValidators.EnailFormat]],
-      psw: [{ value: undefined, disabled: false }, [Validators.required, Validators.nullValidator, CustomValidators.IsNullorEmpty]]
+      email: [{ value: undefined, disabled: false }, [Validators.required, Validators.nullValidator, CustomValidators.IsNullorEmpty, CustomValidators.EmailFormat]],
+      psw: [{ value: undefined, disabled: false }, [Validators.required, Validators.nullValidator, CustomValidators.IsNullorEmpty]],
+      confirmPsw: [{ value: undefined, disabled: false }, [Validators.required, Validators.nullValidator, CustomValidators.IsNullorEmpty]]
     });
   }
 }

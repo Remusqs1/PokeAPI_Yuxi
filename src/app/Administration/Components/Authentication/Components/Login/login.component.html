@@ -1,29 +1,26 @@
 <div class="login-register">
   <div class="login-box">
-    <component-messages #messages></component-messages>
     <div class="card login-box-shadow">
       <div class="card-header rounded-top">
+        <div class="image-container text-center">
+          <img src="https://teams.sourceseek.com/logos/profile/limage-4505-104-photo.jpg" alt="loginPage" class="logo" />
+        </div>
         <h1 class="text-themecolor font-weight-bold text-center mt-1">
-          {{ 'administration.authentication.login.label.title' | translate }}
+          PokeAPI Login
         </h1>
       </div>
-      <!-- <div class="image-container">
-        <img src="assets/images/logo.png" alt="loginPage" class="dark-logo" />
-      </div> -->
       <div class="card-body rounded-bottom" style="padding-bottom: 0">
         <form class="form-horizontal form-material" id="loginform" [formGroup]="loginForm" >
           <div class="form-group">
-            <label for="">{{ 'administration.authentication.login.label.user' | translate}}</label>
+            <label for="">Email</label>
             <div class="col-xs-12">
               <input class="form-control" type="text" required=""
-                placeholder="{{ 'administration.authentication.login.label.user' | translate }}" id="user" formControlName="user"
-                name="user" [ngClass]="{'has-error': (hasError && loginForm.controls['user'].errors) ||
-                                            (loginForm.controls['user'].errors && (loginForm.controls['user'].dirty ||
-                                                loginForm.controls['user'].touched)) }" />
-              <div class="has-error" *ngIf=" (hasError && loginForm.controls['user'].errors) ||
-                                                                      (loginForm.controls['user'].errors && (loginForm.controls['user'].dirty ||
-                                                                          loginForm.controls['user'].touched))">
-                <span *ngIf="loginForm.controls['user'].errors.required">{{ 'general.validations.requiredField' | translate}}</span>
+                placeholder="Email" id="email" formControlName="email"
+                name="email" [ngClass]="{'has-error': (hasError && loginForm.controls['email'].errors) || (loginForm.controls['email'].errors && (loginForm.controls['email'].dirty ||
+                                                loginForm.controls['email'].touched)) }" />
+              <div class="has-error" *ngIf=" (hasError && loginForm.controls['email'].errors) || (loginForm.controls['email'].errors && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched))">
+                <span *ngIf="loginForm.controls['email'].errors.required">{{ 'general.validations.requiredField' | translate}}</span>
+                <span *ngIf="loginForm.controls['email'].errors.requiredEmailFormat">El campo debe ser un correo válido</span>
               </div>
             </div>
           </div>
@@ -50,27 +47,15 @@
           </div>
 
           <div class="col-xs-12">
-            <button type="button" class="btn btn-credi btn-block text-uppercase text-white" (click)="onLoggedIn()">
+            <button type="button" class="btn btn-yuxi btn-block text-capitalize" (click)="onLoggedIn()">
               {{ 'administration.authentication.login.label.signIn' | translate }}
+            </button>
+            <button type="button" class="btn btn-yuxi btn-block text-capitalize" (click)="goRegister()">
+              {{ 'administration.authentication.login.label.register' | translate }}
             </button>
           </div>
           <div class="col-xs-12 m-t-10"></div>
-          <div class="form-group row">
-            <div class="col-md-12 font-14">
-              <div class="custom-control text-center">
-                <a class="btn btn-link" id="to-recover" (click)="goForgotPassword()">
-                  {{ 'administration.authentication.login.label.forgotPwd' | translate }}
-                </a>
-              </div>
-            </div>
-            <div class="col-md-12 font-14">
-              <div class="custom-control text-center">
-                <a class="btn btn-link" id="to-register" (click)="goRegister()">
-                  {{ 'administration.authentication.login.label.register' | translate }}
-                </a>
-              </div>
-            </div>
-          </div>
+
         </form>
       </div>
     </div>

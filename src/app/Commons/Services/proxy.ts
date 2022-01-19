@@ -79,7 +79,7 @@ export class Proxy {
   protected createRequest(relativeUrl: string, method: string, urlParameters: Dictionary<string, any>, body: any,
     withCredentials: boolean): HttpRequest<any> {
     let url = '';
-    url = environment.webApiBaseUrl + relativeUrl;
+    url = environment.pokeApiURl + relativeUrl;
     let search = '';
     if (urlParameters && urlParameters.get('input')) {
       // clone input to avoid components updates

@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  webApiBaseUrl: 'https://localhost:44363',
+  pokeApiURl: 'https://pokeapi.co/api/v2',
+  searchQuantity : 12
 };

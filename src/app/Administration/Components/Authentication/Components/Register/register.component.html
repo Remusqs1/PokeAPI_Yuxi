@@ -3,6 +3,9 @@
     <component-messages #messages></component-messages>
     <div class="card login-box-shadow">
       <div class="card-header rounded-top">
+        <div class="image-container text-center">
+          <img src="https://teams.sourceseek.com/logos/profile/limage-4505-104-photo.jpg" alt="loginPage" class="logo" />
+        </div>
         <h1 class="text-themecolor font-weight-bold text-center mt-1">
           {{ 'administration.authentication.register.label.title' | translate }}
         </h1>
@@ -36,17 +39,40 @@
             <label for="psw">{{ 'administration.authentication.register.label.psw' | translate}}</label>
             <div class="col-xs-12">
               <input class="form-control" type="password" placeholder="{{ 'administration.authentication.register.label.psw' | translate }}" id="psw" formControlName="psw"
-                psw="psw" [ngClass]="{'has-error': (hasError && registerForm.controls['psw'].errors) || (registerForm.controls['psw'].errors && (registerForm.controls['psw'].dirty || registerForm.controls['psw'].touched)) }" />
+                psw="psw" [ngClass]="{'has-error': (hasError && registerForm.controls['psw'].errors) || (registerForm.controls['psw'].errors && (registerForm.controls['psw'].dirty || registerForm.controls['psw'].touched)) || invalidPasswordCharacters }" />
               <div class="has-error" *ngIf=" (hasError && registerForm.controls['psw'].errors) || (registerForm.controls['psw'].errors && (registerForm.controls['psw'].dirty || registerForm.controls['psw'].touched))">
                 <span *ngIf="registerForm.controls['psw'].errors.required">{{ 'general.validations.requiredField' | translate}}</span>
+                
+              </div>
+              <div class="has-error" *ngIf="invalidPasswordCharacters">
+                <span>
+                  Debe contener al menos:  1 carácter numérico, 2 caracteres alfabéticos, 1 letra mayúscula, 1 letra minúscula, 1 carácter especial y una longitud mínima de 8 caracteres",
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="psw">Confirmación de contraseña</label>
+            <div class="col-xs-12">
+              <input class="form-control" type="password" placeholder="Confirmación de contraseña" id="confirmPsw" formControlName="confirmPsw"
+                confirmPsw="confirmPsw" [ngClass]="{'has-error': (hasError && registerForm.controls['confirmPsw'].errors) || (registerForm.controls['confirmPsw'].errors && (registerForm.controls['confirmPsw'].dirty || registerForm.controls['confirmPsw'].touched)) }" />
+              <div class="has-error" *ngIf=" (hasError && registerForm.controls['confirmPsw'].errors) || (registerForm.controls['confirmPsw'].errors && (registerForm.controls['confirmPsw'].dirty || registerForm.controls['confirmPsw'].touched))">
+                <span *ngIf="registerForm.controls['confirmPsw'].errors.required">{{ 'general.validations.requiredField' | translate}}</span>
+                <span *ngIf="registerForm.controls['confirmPsw'].errors.comparePswError">Las contraseñas no coinciden</span>
               </div>
             </div>
           </div>
 
           <div class="col-xs-12">
-            <button type="button" class="btn btn-credi btn-block text-uppercase text-white" (click)="register()">
+            <button type="button" class="btn btn-yuxi btn-block text-uppercase" (click)="register()">
               {{ 'administration.authentication.register.button.register' | translate }}
             </button>
+
+            <button type="button" class="btn btn-yuxi btn-block text-uppercase" (click)="goLogin()">
+              Cancelar
+            </button>
+
           </div> 
           
         </form>
