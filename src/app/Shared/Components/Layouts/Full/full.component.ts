@@ -24,7 +24,7 @@ export class FullComponent implements OnInit {
 
   ngOnInit() {
     if (this.router.url === '/') {
-      this.router.navigate(['/Dashboard']);
+      this.router.navigate(['/']);
     }
     this.handleLayout();
   }

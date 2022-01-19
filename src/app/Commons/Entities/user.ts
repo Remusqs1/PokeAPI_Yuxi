@@ -1,9 +1,4 @@
 
-import { Profile } from './profile';
-import { DocumentType } from './documentType';
-import * as moment from 'moment';
-import { Company } from './company';
-
 export class User  {
 
   public usrID: number;
