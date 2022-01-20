@@ -17,6 +17,8 @@ export class DetailsComponent implements OnInit {
                 private routes: Router, private toastr: ToastrService) { }
 
     ngOnInit() {
+        this.pokemon = new Pokemon();
+
         this.activatedRoute.queryParamMap.subscribe(params => {
             let paramKey = params.get('id');
 
@@ -36,7 +38,6 @@ export class DetailsComponent implements OnInit {
     }
 
     getPokemon(input) {
-        this.pokemon = new Pokemon();
 
         this.pokeService.getPokes(input).subscribe(
             res => {
@@ -64,7 +65,6 @@ export class DetailsComponent implements OnInit {
             err => {
                 console.log(err);
                 this.pokemon = null;
-                this.toastr.error('No Pokémon Found with that name!', 'Error!');
             }
         )
     }

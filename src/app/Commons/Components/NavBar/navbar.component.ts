@@ -45,7 +45,7 @@ export class NavBarComponent implements OnInit {
   }
 
   onSearch() {
-    let searchValue = this.searchForm.get('searchPokemon').value;
+    let searchValue : string = this.searchForm.get('searchPokemon').value.toLowerCase();;
     if (this.searchForm.get('searchPokemon').value !== undefined && this.searchForm.get('searchPokemon').value !== null && this.searchForm.get('searchPokemon').value !== "") {
       this.routes.navigate(['Details'], { queryParams: { searchValue } });
     }
