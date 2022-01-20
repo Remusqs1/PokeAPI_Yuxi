@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import { AuthenticationFormService } from '../../Services/authentication.form.service';
+import { User } from '../../../../../Commons/Entities/user';
 
 
 @Component({
@@ -30,6 +31,11 @@ export class LoginComponent implements OnInit {
     this.showLoader = true;
     if (this.loginForm.valid) {
         //LocalStorage
+        let user = new User();
+        user.usr_email = this.loginForm.get("email").value;
+        let userJson = JSON.stringify(user);
+        localStorage.setItem("user", userJson);
+        
         this.goDashboard();
     } else {
         this.hasError = true;

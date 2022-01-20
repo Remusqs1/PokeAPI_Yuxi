@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from '../../../../../Commons/Entities/user';
 import { AuthenticationFormService } from '../../Services/authentication.form.service';
 @Component({
     selector: 'app-register',
@@ -14,10 +15,9 @@ export class RegisterComponent implements OnInit {
     showLoader = false;
     regex = (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,18}$/); //1 mayúscula, 1 minuscula, 1 número, 1 caracter especial, entre 8 y 18 de longitud
     invalidPasswordCharacters = false;
-
-
+    
     constructor(private authenticationFormService: AuthenticationFormService,
-        private routes: Router) { }
+                private routes: Router) { }
 
     ngOnInit() {
         this.registerForm = this.authenticationFormService.getRegisterForm();
@@ -33,25 +33,26 @@ export class RegisterComponent implements OnInit {
     ngAfterViewInit(): void {
         this.invalidPasswordCharacters = false;
         this.registerForm.get('psw').valueChanges.subscribe(value => {
-          if (this.regex.test(value)) {
-            this.invalidPasswordCharacters = false;
-          }
-          else {
-            this.invalidPasswordCharacters = true;
-          }
+            if (this.regex.test(value)) {
+                this.invalidPasswordCharacters = false;
+            }
+            else {
+                this.invalidPasswordCharacters = true;
+            }
         });
-      }
+    }
 
     register() {
         this.hasError = false;
         if (this.registerForm.valid) {
-            // let createUser = new CreateUserIn();
-            // createUser.usr_email = this.registerForm.get('email').value;
-            // createUser.usr_name = this.registerForm.get('name').value;
-            // createUser.usr_psw = this.registerForm.get('psw').value;
 
             //LocalStorage
-            this.routes.navigate(['']);
+            let user = new User();
+            user.usr_userName = this.registerForm.get("name").value;
+            user.usr_email = this.registerForm.get("email").value;
+            let userJson = JSON.stringify(user);
+            localStorage.setItem("user", userJson);
+            this.routes.navigate(['Home']);
         }
         else {
             this.hasError = true;
