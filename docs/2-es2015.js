@@ -231,3 +231,4 @@ const DETAILS_ROUTES = _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModul
 /***/ })
 
 }]);
+//# sourceMappingURL=2-es2015.js.map

@@ -310,3 +310,4 @@ class Pokemon {
 /***/ })
 
 }]);
+//# sourceMappingURL=common-es2015.js.map
