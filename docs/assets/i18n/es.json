@@ -1,0 +1,45 @@
+{
+  "administration.authentication.login.label.forgotPwd": "Olvidé mi clave",
+  "administration.authentication.login.label.psw" : "Contraseña",
+  "administration.authentication.login.label.register" : "Registrarse",
+  "administration.authentication.login.label.signIn" : "Iniciar Sesión",
+  "administration.authentication.login.label.title" : "DevOps Dirección de Desarrollo",
+  "administration.authentication.login.label.user" : "Usuario",
+
+  "administration.authentication.register.button.register" : "Registrarse",
+  "administration.authentication.register.label.title" : "Registro",
+  "administration.authentication.register.label.name" : "Nombre completo",
+  "administration.authentication.register.label.psw" : "Contraseña",
+  "administration.authentication.register.label.changePsw" : "Cambiar contraseña",
+
+  "devCells.label.cellName" : "Nombre de la célula",
+
+  "home.label.title" : "DevOps - Dirección de Desarrollo",
+
+  "general.email.label": "Correo electrónico",
+  "general.noRecords": "No se encontraron registros",
+  "general.select.label": "Seleccione",
+  "general.validations.requiredField": "El campo es obligatorio",
+  "general.delete": "Eliminar",
+  "general.detail": "Detalle",
+  "general.edit": "Editar",
+
+  "menu.administration.cells": "Células de desarrollo",
+  "menu.administration.home": "Home",
+  "menu.administration.indicatives": "Indicadores",
+  "menu.administration.kpi": "Registros KPI",
+  "menu.administration.permissions": "Permisos",
+  "menu.administration.projects": "Proyectos",
+  "menu.administration.profiles": "Perfil",
+  "menu.administration.records": "Registros",
+  "menu.administration.title": "Administración",
+  "menu.administration.users": "Usuarios",
+
+  "navigation.menu.label.logOut": "Cerrar sesión",
+
+  "route.breadcrumb.management.home.title": "Home",
+  "route.breadcrumb.management.devCells.title": "Células de desarrollo",
+  "route.breadcrumb.management.indivatives.title": "Indicativos"
+
+}
+
